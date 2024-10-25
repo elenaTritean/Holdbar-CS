@@ -4,23 +4,37 @@ import HoldbarLogo from "../../assets/images/holdbar-dark.svg"
 
 export default function SideBar() {
   const SideBarStyle={
-    sideBar: {
-        margin: 0,
-        padding: 0,
-        width: "200px",
-        backgroundColor: "#f1f1f1",
-        position: "fixed",
-        height: "100%",
-        overflow: "auto",
-      }
+    wrapper: {
+        boxSizing: "border-box",
+        width:"260px",
+        paddingTop:"15px",
+        paddingRight:"15px",
+        paddingBottom:"15px",
+        paddingLeft:"15px",
+        maxWidth: "100%",
+        height: "100vh", // Full height of the viewport
+        position: "fixed", 
+
+      },
+    
+    logo: {
+       marginTop:"24px",
+       marginBottom:"8px",
+       marginLeft: "8px",
+       marginRight: "8px",
+       height: "22px",
+       width:"124px",
+    }
+    
+    
   }
   return (
-    <header className="sideBar" style={SideBarStyle.sideBar}>
-        <img src={HoldbarLogo} alt="logo" />
+    <div className="wrapper" style={SideBarStyle.wrapper}>
+        <img src={HoldbarLogo} alt="logo" className="logo" style={SideBarStyle.logo} />
         <h1>CS Team</h1>
         {/*<Link to="/list">List</Link>
         <Link to="/create">Create new</Link>
         <Link to="/giftcards">Gift cards</Link>*/}
-    </header>
+    </div>
   )
 }
