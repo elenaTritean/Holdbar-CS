@@ -1,17 +1,19 @@
 import React from 'react'
 import HoldbarLogo from "../../assets/images/holdbar-dark.svg"
-{/*import { Link } from 'react-router-dom';*/ }
+import { Link } from 'react-router-dom'
 import { useFontStyles } from "../../components/styling/FontContext"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBuilding, faGift, faPlus } from '@fortawesome/free-solid-svg-icons'
 export default function SideBar() {
   const SideBarStyle = {
     wrapper: {
       boxSizing: "border-box",
       width: "260px",
-
-      maxWidth: "100%",
       height: "100vh", // Full height of the viewport
-
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "white",
 
     },
 
@@ -46,9 +48,13 @@ export default function SideBar() {
         <img src={HoldbarLogo} alt="logo" style={SideBarStyle.logo} />
         <h1 style={{ ...fontStyles.largeTextMedium, ...SideBarStyle.subtext }} >CS Team</h1>
       </div>
-      {/*<Link to="/list">List</Link>
-        <Link to="/create">Create new</Link>
-        <Link to="/giftcards">Gift cards</Link>*/}
+
+      <div>
+        <Link to="../../pages/customers/customers-dashboard/CustomersDashboard"><FontAwesomeIcon icon={faBuilding} /></Link>
+        <Link to="../../pages/customers/create-new-customer/CreateNewCustomerLayout"><FontAwesomeIcon icon={faPlus} /></Link>
+        <Link to="../../pages/giftcards/Giftcards"><FontAwesomeIcon icon={faGift} /></Link>
+      </div>
+
     </div >
   )
 }
