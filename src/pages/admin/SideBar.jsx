@@ -1,9 +1,12 @@
 import React from 'react'
 import HoldbarLogo from "../../assets/images/holdbar-dark.svg"
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useFontStyles } from "../../components/styling/FontContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBuilding, faGift, faPlus } from '@fortawesome/free-solid-svg-icons'
+import CustomersDashboard from '../customers/customers-dashboard/CustomersDashboard'
+import CreateNewCustomerLayout from '../customers/create-new-customer/CreateNewCustomerLayout'
+import Giftcards from "../giftcards/Giftcards"
 export default function SideBar() {
   const SideBarStyle = {
     wrapper: {
@@ -50,9 +53,9 @@ export default function SideBar() {
       </div>
 
       <div>
-        <Link to="../../pages/customers/customers-dashboard/CustomersDashboard"><FontAwesomeIcon icon={faBuilding} /></Link>
-        <Link to="../../pages/customers/create-new-customer/CreateNewCustomerLayout"><FontAwesomeIcon icon={faPlus} /></Link>
-        <Link to="../../pages/giftcards/Giftcards"><FontAwesomeIcon icon={faGift} /></Link>
+        <NavLink to="customer-accounts"><FontAwesomeIcon icon={faBuilding} /> Customer accounts</NavLink>
+        <NavLink to="create-new-customer"><FontAwesomeIcon icon={faPlus} /> Create New Customer</NavLink>
+        <NavLink to="gift-cards-management"><FontAwesomeIcon icon={faGift} /> Gift cards management</NavLink>
       </div>
 
     </div >

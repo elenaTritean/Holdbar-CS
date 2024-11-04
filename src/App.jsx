@@ -1,30 +1,50 @@
 
 import './App.css'
-import SideBar from "./pages/admin/SideBar"
-import TopBar from './pages/admin/TopBar'
-import { FontProvider } from './components/styling/FontContext'
+import CreateNewCustomerLayout from "./pages/customers/create-new-customer/CreateNewCustomerLayout"
+import CustomersDashboard from './pages/customers/customers-dashboard/CustomersDashboard'
+import Giftcards from "./pages/giftcards/Giftcards"
+import Layout from './pages/admin/Layout'
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+
+
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Layout />,
+        children: [
+            {
+                path: "/customer-accounts",
+                element: <CustomersDashboard />,
+            },
+
+            {
+                path: "/create-new-customer",
+                element: <CreateNewCustomerLayout />,
+            },
+
+            {
+                path: "/gift-cards-management",
+                element: <Giftcards />,
+            },
+        ]
+
+
+
+
+    }
+]);
 
 function App() {
     return (
+
         <div className="App">
-            <Router>
-                <FontProvider>
-                    <div className="flexContainer flexRow">
-                        <SideBar />
-                        <Routes>
-                            <Route path="/" />
-                        </Routes>
-                        <div className="flexContainer flexColumn" style={{ flex: 1 }}>
-                            <TopBar />
-
-                        </div>
-                    </div>
-                </FontProvider >
-            </Router>
-
+            <RouterProvider router={router} />
         </div >
+
     )
 }
 

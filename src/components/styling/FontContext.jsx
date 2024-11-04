@@ -1,6 +1,3 @@
-{/*Font will be used in almost every component. This is a context API to manage all font styles centrally.
-This approach ensures that font styles are loaded once when the page initializes.*/}
-
 import React, { createContext, useContext } from 'react';
 
 
@@ -28,11 +25,11 @@ const fontStyles = {
   linkNormal: { fontWeight: 400, fontSize: "14px", lineHeight: "150%" },
 }
 
-{/*Context API first step: create*/ }
+
 const FontContext = createContext(fontStyles);
 
 
-{/*Context API second step:provide*/ }
+
 export const FontProvider = ({ children }) => {
 
 
