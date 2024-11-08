@@ -1,32 +1,10 @@
 import React, { createContext, useContext } from 'react';
+import classes from "./FontContext.module.css"
 
 
 
-const fontStyles = {
-  heading1: { fontWeight: 500, fontSize: "60px", lineHeight: "120%" },
-  heading2: { fontWeight: 400, fontSize: "60px", lineHeight: "120%" },
-  heading3: { fontWeight: 500, fontSize: "44px", lineHeight: "120%" },
-  heading4: { fontWeight: 400, fontSize: "44px", lineHeight: "120%" },
-  heading5: { fontWeight: 500, fontSize: "30px", lineHeight: "120%" },
-  heading6: { fontWeight: 400, fontSize: "30px", lineHeight: "120%" },
-  extraLargeTextMedium: { fontWeight: 500, fontSize: "24px", lineHeight: "140%" },
-  extraLargeTextNormal: { fontWeight: 400, fontSize: "24px", lineHeight: "140%" },
-  largeTextMedium: { fontWeight: 500, fontSize: "18px", lineHeight: "140%" },
-  largeTextNormal: { fontWeight: 400, fontSize: "18px", lineHeight: "150%" },
-  mediumTextMedium: { fontWeight: 500, fontSize: "16px", lineHeight: "150%" },
-  mediumTextNormal: { fontWeight: 400, fontSize: "16px", lineHeight: "150%" },
-  smallTextMedium: { fontWeight: 500, fontSize: "14px", lineHeight: "150%" },
-  smallTextNormal: { fontWeight: 400, fontSize: "14px", lineHeight: "150%" },
-  extraSmallTextMedium: { fontWeight: 500, fontSize: "12px", lineHeight: "160%" },
-  extraSmallTextNormal: { fontWeight: 400, fontSize: "12px", lineHeight: "160%" },
-  tinyTextMedium: { fontWeight: 500, fontSize: "10px", lineHeight: "160%" },
-  tinyTextNormal: { fontWeight: 400, fontSize: "10px", lineHeight: "160%" },
-  linkMedium: { fontWeight: 500, fontSize: "14px", lineHeight: "150%" },
-  linkNormal: { fontWeight: 400, fontSize: "14px", lineHeight: "150%" },
-}
 
-
-const FontContext = createContext(fontStyles);
+const FontContext = createContext(classes);
 
 
 
@@ -34,7 +12,7 @@ export const FontProvider = ({ children }) => {
 
 
   return (
-    <FontContext.Provider value={fontStyles}>
+    <FontContext.Provider value={`${classes.fontStyles}`}>
       {children}
     </FontContext.Provider>
   )
