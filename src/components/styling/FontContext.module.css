@@ -1,0 +1,121 @@
+.fontStyles {
+    .heading1 {
+        font-weight: 500;
+        font-size: 60px;
+        line-height: 120%
+    }
+
+    .heading2 {
+        font-weight: 400;
+        font-size: 60px;
+        line-height: 120%
+    }
+
+    .heading3 {
+        font-weight: 500;
+        font-size: 44px;
+        line-height: 120%
+    }
+
+    .heading4 {
+        font-weight: 400;
+        font-size: 44px;
+        line-height: 120%
+    }
+
+    .heading5 {
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 120%
+    }
+
+    .heading6 {
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 120%
+    }
+
+    .extraLargeTextMedium {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 140%
+    }
+
+    .extraLargeTextNormal {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 140%
+    }
+
+    .largeTextMedium {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 140%
+    }
+
+    .largeTextNormal {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%
+    }
+
+    .mediumTextMedium {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%
+    }
+
+    .mediumTextNormal {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%
+    }
+
+    .smallTextMedium {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%
+    }
+
+    .smallTextNormal {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%
+    }
+
+    .extraSmallTextMedium {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 160%
+    }
+
+    .extraSmallTextNormal {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 160%
+    }
+
+    .tinyTextMedium {
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 160%
+    }
+
+    .tinyTextNormal {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 160%
+    }
+
+    .linkMedium {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 150%
+    }
+
+    .linkNormal {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%
+    }
+}
