@@ -1,11 +1,11 @@
 import React from 'react'
 import HoldbarLogo from "../../assets/images/holdbar-dark.svg"
-
+import Customers from "../../assets/images/icon_customer.png"
+import NewCustomer from "../../assets/images/icon_customer_new.png"
+import GiftCards from "../../assets/images/icon_giftcard.png"
 import { NavLink } from 'react-router-dom'
 
 import { useFontStyles } from "../../components/styling/FontContext"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBuilding, faGift, faPlus } from '@fortawesome/free-solid-svg-icons'
 import "../../App.css"
 
 
@@ -88,9 +88,9 @@ export default function SideBar() {
       </div>
 
       <div className="flexContainer flexColumn" style={{ ...SideBarStyle.navContainer, ...fontStyles.mediumTextMedium }}>
-        <NavLink to="customer-accounts" style={SideBarStyle.navElements}><FontAwesomeIcon icon={faBuilding} /> Customers</NavLink>
-        <NavLink to="create-new-customer" style={SideBarStyle.navElements}><FontAwesomeIcon icon={faPlus} /> Create New</NavLink>
-        <NavLink to="gift-cards-management" style={SideBarStyle.navElements}><FontAwesomeIcon icon={faGift} /> Gift cards</NavLink>
+        <NavLink to="customer-accounts" style={SideBarStyle.navElements}><img src={Customers} alt="Customers icon" />Customers</NavLink>
+        <NavLink to="create-new-customer" style={SideBarStyle.navElements}><img src={NewCustomer} alt="New customer icon" /> Create New</NavLink>
+        <NavLink to="gift-cards-management" style={SideBarStyle.navElements}><img src={GiftCards} alt="Gift cards icon" /> Gift cards</NavLink>
       </div>
 
     </div >
