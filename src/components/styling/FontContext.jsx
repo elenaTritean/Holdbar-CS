@@ -10,7 +10,7 @@ const FontContext = createContext(classes);
 
 export const FontProvider = ({ children }) => {
 
-
+  console.log(classes.fontStyles)
   return (
     <FontContext.Provider value={`${classes.fontStyles}`}>
       {children}
