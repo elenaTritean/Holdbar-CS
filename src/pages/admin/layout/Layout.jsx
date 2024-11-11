@@ -1,16 +1,16 @@
 import React from 'react'
-import SideBar from './SideBar'
-import TopBar from './TopBar'
-import "../../App.css"
+import SideBar from '../sidebar/SideBar'
+import TopBar from '../TopBar'
+import "../../../App"
 
-import { FontProvider } from '../../components/styling/FontContext'
+import { ThemeProvider } from '../../../components/styling/ThemeContext'
 
 export default function Layout() {
 
 
     return (
         <div>
-            <FontProvider>
+            <ThemeProvider>
                 <div className="flexContainer flexRow">
                     <SideBar />
                     <div className="flexContainer flexColumn" style={{ flex: 1 }}>
@@ -18,7 +18,7 @@ export default function Layout() {
 
                     </div>
                 </div>
-            </FontProvider >
+            </ThemeProvider >
         </div>
     )
 }
