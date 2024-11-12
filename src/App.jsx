@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: "/customer-accounts",
+                path: "/customers",
                 element: <CustomersDashboard />,
             },
 
@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/gift-cards-management",
+                path: "/gift-cards",
                 element: <Giftcards />,
             },
         ]

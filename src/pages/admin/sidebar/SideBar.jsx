@@ -1,33 +1,36 @@
 import React from 'react'
-import HoldbarLogo from "../../../assets/images/holdbar-dark.svg"
-import Customers from "../../../assets/images/icon_customer.png"
-import NewCustomer from "../../../assets/images/icon_customer_new.png"
-import GiftCards from "../../../assets/images/icon_giftcard.png"
+
 import { NavLink } from 'react-router-dom'
 import { useTheme } from "../../../components/styling/ThemeContext"
+
 import sideBar from "./SideBar.module.css"
-
-
 import "../../../App"
 
-
+import HoldbarLogo from "../../../assets/images/holdbar-dark.svg"
+import { CustomerIcon } from '../../../components/styling/icons/CustomerIcon'
+import { CustomerNewIcon } from '../../../components/styling/icons/CustomerNewIcon'
+import { GiftcardIcon } from '../../../components/styling/icons/GiftcardIcon'
 
 export default function SideBar() {
   const theme = useTheme();
+  
 
   return (
     <div className={`flexContainer ${sideBar.wrapper} flexColumn`}>
       <div >
-        <img src={HoldbarLogo} className={`flexContainer ${sideBar.logo}`} alt="logo" />
-        <h1  className={`${theme.fontFamily} ${theme.h3}`}>CS Team Platform</h1>
-        <br />
-        <h1>Customers</h1>
+        <div className={`${sideBar.logoWrapper}`} >
+          <img src={HoldbarLogo} className={` ${sideBar.logo}`} alt="logo" />
+        </div>
+        <h1  style={{...theme.h3, paddingLeft:"7px", margin:"0px"}}>CS Team Platform</h1>
+        <hr className={` ${sideBar.hr}`}/>
       </div>
 
-      <div className={`flexContainer ${sideBar.sidebar}  flexColumn`}>
-        <NavLink to="customer-accounts" ><img src={Customers} alt="Customers icon" />Customers</NavLink>
-        <NavLink to="create-new-customer" ><img src={NewCustomer} alt="New customer icon" /> Create New</NavLink>
-        <NavLink to="gift-cards-management" ><img src={GiftCards} alt="Gift cards icon" /> Gift cards</NavLink>
+      <div style={{gap:"15px"}} className={`flexContainer ${sideBar.sidebar}  flexColumn`} >
+        <NavLink to="customers" style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={`flexContainer`} ><CustomerIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}} /> Customers</NavLink>
+
+        <NavLink to="create-new-customer" style={{ ...theme.h4, alignItems:"center", height:"40px"  }} className={`flexContainer`}><CustomerNewIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Create New</NavLink>
+
+        <NavLink to="gift-cards" style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={`flexContainer`}><GiftcardIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Gift cards</NavLink>
       </div>
 
     </div >
