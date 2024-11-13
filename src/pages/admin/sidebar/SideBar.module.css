@@ -1,8 +1,4 @@
-.sidebar {
-    .a {
-        padding-top:"10px"; 
-        padding-bottom:"10px";
-    }
+.sidebarLink {
 
     a,
     a:link {
@@ -16,16 +12,26 @@
         border-radius: 8px;
         color:rgb(181, 182, 196);
     }
-    a:active{
+
+    a:visited {
+        text-decoration: none;
+    }
+
+    
+    .active:hover {
+        background-color: rgb(238, 241, 253); /* Active background color */
+        color: rgb(2, 39, 194);
+    }
+
+    .active {
         text-decoration: none;
         background-color: rgb(238, 241, 253);
         border-radius: 8px;
         color:rgb(2, 39, 194);
     }
-    a:visited {
-        text-decoration: none;
-    }
 }
+
+
 
 .wrapper {
     width: 230px;
@@ -45,12 +51,5 @@
     margin: 24px 8px 8px;
 }
 
-.hr {
-    background-color: rgb(237, 237, 241); 
-    border: none; 
-    height: 1px;
-    margin-top:29px;
-    margin-bottom:38px;
-}
 
 

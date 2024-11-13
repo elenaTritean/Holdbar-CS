@@ -17,20 +17,17 @@ export default function SideBar() {
 
   return (
     <div className={`flexContainer ${sideBar.wrapper} flexColumn`}>
-      <div >
+      <div style={{paddingBottom:"60px"}}>
         <div className={`${sideBar.logoWrapper}`} >
           <img src={HoldbarLogo} className={` ${sideBar.logo}`} alt="logo" />
         </div>
         <h1  style={{...theme.h3, paddingLeft:"7px", margin:"0px"}}>CS Team Platform</h1>
-        <hr className={` ${sideBar.hr}`}/>
       </div>
 
-      <div style={{gap:"15px"}} className={`flexContainer ${sideBar.sidebar}  flexColumn`} >
-        <NavLink to="customers" style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={`flexContainer`} ><CustomerIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}} /> Customers</NavLink>
-
-        <NavLink to="create-new-customer" style={{ ...theme.h4, alignItems:"center", height:"40px"  }} className={`flexContainer`}><CustomerNewIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Create New</NavLink>
-
-        <NavLink to="gift-cards" style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={`flexContainer`}><GiftcardIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Gift cards</NavLink>
+      <div style={{gap:"15px"}}  className={`flexContainer ${sideBar.sidebarLink} flexColumn`} >
+        <NavLink to="customers"  style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`} ><CustomerIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}} /> Customers</NavLink>
+        <NavLink to="create-new-customer"  style={{ ...theme.h4, alignItems:"center", height:"40px"  }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`}><CustomerNewIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Create New</NavLink>
+        <NavLink to="gift-cards"  style={{ ...theme.h4, alignItems:"center", height:"40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`}><GiftcardIcon style={{fill: 'currentColor', width:"26px", paddingRight:"10px", paddingLeft:"10px"}}/> Gift cards</NavLink>
       </div>
 
     </div >
