@@ -1,9 +1,59 @@
-{
-    "todos": [
-        {
-            "id": 1,
-            "todo": "Walk the dog",
-            "slug": "walk-the-dog"
-        }
-    ]
-}
+[
+    {
+      "name": "Tamara Purses",
+      "Last Booking": "2023-01-10",
+      "Upcoming Events": 8,
+      "Onboarded": true
+    },
+    
+    {
+        "name": "Surfing LD",
+        "Last Booking": "2024-01-10",
+        "Upcoming Events": 2,
+        "Onboarded": true
+      },
+      {
+        "name": "Forest Walks",
+        "Last Booking": "2024-05-04",
+        "Upcoming Events": 3,
+        "Onboarded": true
+      },
+      
+      {
+        "name": "Tom Hardinson",
+        "Last Booking": "2023-02-06",
+        "Upcoming Events": 16,
+        "Onboarded": true
+      },
+      {
+        "name": "Black cross",
+        "Last Booking": "2023-04-12",
+        "Upcoming Events": 2,
+        "Onboarded": true
+      },
+      {
+        "name": "Le petit maison",
+        "Last Booking": "2023-04-01",
+        "Upcoming Events": 9,
+        "Onboarded": true
+      },
+      {
+        "name": "Creatives in action",
+        "Last Booking": "2024-01-10",
+        "Upcoming Events": 13,
+        "Onboarded": false
+      },
+      {
+        "name": "Aarhus scouts",
+        "Last Booking": "2024-07-03",
+        "Upcoming Events": 34,
+        "Onboarded": true
+      },
+
+      {
+        "name": "Your Piano Lessons",
+        "Last Booking": "2024-23-01",
+        "Upcoming Events": 11,
+        "Onboarded": false
+      }
+]

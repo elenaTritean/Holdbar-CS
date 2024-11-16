@@ -8,9 +8,9 @@ export default function TopBar() {
     const TopBarStyle = {
         wrapper: {
             display: "flex",
-            flexDirection: "row", // Keep items in a row
-            alignItems: "center", // Center items vertically
-            justifyContent: "space-between", // Space between search and image
+            flexDirection: "row", 
+            alignItems: "center", 
+            justifyContent: "space-between", 
             margin: "20px",
             boxSizing: "border-box",
         },
@@ -53,8 +53,8 @@ export default function TopBar() {
         paragraph: {
             color: "grey",
             fontSize: "10px",
-            marginLeft: "auto", // Push paragraph to the right
-            alignSelf: "center", // Vertically center the paragraph
+            marginLeft: "auto", 
+            alignSelf: "center", 
         },
 
         paragraphWrapper: {
@@ -70,7 +70,7 @@ export default function TopBar() {
 
     return (
     <div>
-        {/* Flex container wrapping all elements */}
+     
         <div style={TopBarStyle.wrapper}>
             <div style={TopBarStyle.inputWrapper}>
                 <SearchIcon />

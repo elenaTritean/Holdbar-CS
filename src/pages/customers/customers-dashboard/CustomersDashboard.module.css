@@ -1,0 +1,27 @@
+.searchBar {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 0.80rem;
+  margin-left: 2px;
+  color: rgb(181, 182, 196);
+}
+
+.searchBarWrapper {
+  background-color: white; 
+  border-radius: 10px;
+  height: 2.0rem;
+  padding: 0 15px;
+  width: 220px;
+  box-shadow: 0px 0px 0px #ddd;
+  display: flex; 
+  border: 1px solid grey;
+  box-sizing: border-box;
+  margin:10px;
+}
+
+.filtersWrapper {
+  display:flex;
+  align-items: center;
+  flex-direction: row;
+}

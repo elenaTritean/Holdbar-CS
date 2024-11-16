@@ -4,6 +4,7 @@ import TopBar from '../topbar/TopBar'
 import "../../../App"
 
 import { ThemeProvider } from '../../../components/styling/ThemeContext'
+import CustomersDashboard from '../../customers/customers-dashboard/CustomersDashboard'
 
 export default function Layout() {
 
@@ -15,9 +16,13 @@ export default function Layout() {
                     <SideBar />
                     <div className="flexContainer flexColumn" style={{ flex: 1 }}>
                         <TopBar />
+                        <CustomersDashboard/>
 
                     </div>
+                    
+                    
                 </div>
+                
             </ThemeProvider >
         </div>
     )
