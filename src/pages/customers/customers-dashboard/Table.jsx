@@ -1,8 +1,64 @@
 import React from 'react'
 import {useTable} from "react-table"
+import dummydata from "../../../DUMMY-DATA.json"
 
 export default function Table() {
+
+  const data= React.useMemo(()=> dummydata, [])
+  const columns = React.useMemo(()=>[
+    {
+      Header:"Name",
+      accessor:"name"
+    },
+
+    {
+      Header:"Last Booking",
+      accessor:"last_booking"
+    },
+
+    {
+      Header:"Upcoming Events",
+      accessor:"upcoming_events"
+    },
+
+    {
+      Header:"Onboarded",
+      accessor:"onboarded"
+    },
+
+  ], []);
+
+  const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable ({columns, data});
+
   return (
-    <Box></Box>
+    <div>
+      <table {...getTableProps()}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                </th>
+                ))} 
+            </tr>
+           )
+           )}
+        </thead>
+
+        <tbody {...getTableBodyProps}>
+           {rows.map((row) => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) =>(
+                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+           ))}
+              </tr>
+            )
+           })}
+        </tbody>
+      </table>
+    </div>
   )
 }
