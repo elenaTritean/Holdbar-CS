@@ -8,15 +8,21 @@
 const searchBar: string;
 const searchBarWrapper: string;
 const filtersWrapper: string;
+const yesNoButtonsWrapper: string;
+const yesNoButton: string;
 
 export {
 	searchBar,
 	searchBarWrapper,
-	filtersWrapper
+	filtersWrapper,
+	yesNoButtonsWrapper,
+	yesNoButton
 };
 
 export default {
 	searchBar,
 	searchBarWrapper,
-	filtersWrapper
+	filtersWrapper,
+	yesNoButtonsWrapper,
+	yesNoButton
 }

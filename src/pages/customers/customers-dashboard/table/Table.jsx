@@ -1,43 +1,26 @@
 import React from 'react'
 import {useTable} from "react-table"
-import dummydata from "../../../DUMMY-DATA.json"
 
-export default function Table() {
+import table from "./Table.module.css"
+import { useTheme } from "../../../../components/styling/ThemeContext"
 
-  const data= React.useMemo(()=> dummydata, [])
-  const columns = React.useMemo(()=>[
-    {
-      Header:"Name",
-      accessor:"name"
-    },
+export default function Table({data, columns}) {
+  
+  
+  const theme = useTheme();
 
-    {
-      Header:"Last Booking",
-      accessor:"last_booking"
-    },
-
-    {
-      Header:"Upcoming Events",
-      accessor:"upcoming_events"
-    },
-
-    {
-      Header:"Onboarded",
-      accessor:"onboarded"
-    },
-
-  ], []);
 
   const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable ({columns, data});
 
+  
   return (
     <div>
-      <table {...getTableProps()}>
-        <thead>
+      <table {...getTableProps()} className={table.tableWrapper} >
+        <thead className={table.theadWrapper} style={theme.h5}>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>
+                <th {...column.getHeaderProps()} style={{...theme.h5,...theme.normal}}>
                   {column.render("Header")}
                 </th>
                 ))} 
@@ -46,7 +29,7 @@ export default function Table() {
            )}
         </thead>
 
-        <tbody {...getTableBodyProps}>
+        <tbody {...getTableBodyProps()}  className={table.tbodyWrapper} style={{...theme.h4, ...theme.normal}}>
            {rows.map((row) => {
             prepareRow(row)
             return (

@@ -1,0 +1,31 @@
+.tableWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .theadWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .tbodyWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  tr {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top:10px;
+    margin-bottom:10px;
+  }
+  
+  th, td {
+    flex: 1;
+    padding: 8px;
+    text-align: center;
+  }
+

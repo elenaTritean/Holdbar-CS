@@ -3,57 +3,57 @@
       "name": "Tamara Purses",
       "last_booking": "2023-01-10",
       "upcoming_events": 8,
-      "onboarded": true
+      "onboarded": "yes"
     },
     
     {
         "name": "Surfing LD",
         "last_booking": "2024-01-10",
         "upcoming_events": 2,
-        "onboarded": true
+        "onboarded": "yes"
       },
       {
         "name": "Forest Walks",
         "last_booking": "2024-05-04",
         "upcoming_events": 3,
-        "onboarded": true
+        "onboarded": "yes"
       },
       
       {
         "name": "Tom Hardinson",
         "last_booking": "2023-02-06",
         "upcoming_events": 16,
-        "onboarded": true
+        "onboarded": "yes"
       },
       {
         "name": "Black cross",
         "last_booking": "2023-04-12",
         "upcoming_events": 2,
-        "onboarded": true
+        "onboarded": "yes"
       },
       {
         "name": "Le petit maison",
         "last_booking": "2023-04-01",
         "upcoming_events": 9,
-        "onboarded": true
+        "onboarded": "yes"
       },
       {
         "name": "Creatives in action",
         "last_booking": "2024-01-10",
         "upcoming_events": 13,
-        "onboarded": false
+        "onboarded": "no"
       },
       {
         "name": "Aarhus scouts",
         "last_booking": "2024-07-03",
         "upcoming_events": 34,
-        "onboarded": true
+        "onboarded": "yes"
       },
 
       {
         "name": "Your Piano Lessons",
         "last_booking": "2024-23-01",
         "upcoming_events": 11,
-        "onboarded": false
+        "onboarded": "no"
       }
 ]
