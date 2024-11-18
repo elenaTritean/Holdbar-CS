@@ -1,0 +1,18 @@
+.topBarWrapper{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.searchBarWrapper {
+    display:flex;
+    flex-direction:row;
+}
+
+.input {
+    display:flex;
+}
+
+.img {
+    display:flex;
+}

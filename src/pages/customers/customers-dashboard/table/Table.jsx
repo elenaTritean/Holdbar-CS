@@ -8,9 +8,12 @@ export default function Table({data, columns}) {
   
   
   const theme = useTheme();
-
-
   const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} = useTable ({columns, data});
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
   
   return (
@@ -29,17 +32,24 @@ export default function Table({data, columns}) {
            )}
         </thead>
 
-        <tbody {...getTableBodyProps()}  className={table.tbodyWrapper} style={{...theme.h4, ...theme.normal}}>
-           {rows.map((row) => {
-            prepareRow(row)
+        <tbody {...getTableBodyProps()} className={table.tbodyWrapper} style={{ ...theme.h4, ...theme.normal }}>
+          {rows.map((row) => {
+            prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell) =>(
-                  <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-           ))}
+                {row.cells.map((cell) => {
+                  const isLastBooking = cell.column.id === "last_booking";
+                  const formattedValue = isLastBooking
+                    ? dateFormatter.format(new Date(cell.value)) 
+                    : cell.render("Cell");
+
+                  return (
+                    <td {...cell.getCellProps()}>{formattedValue}</td>
+                  );
+                })}
               </tr>
-            )
-           })}
+            );
+          })}
         </tbody>
       </table>
     </div>
