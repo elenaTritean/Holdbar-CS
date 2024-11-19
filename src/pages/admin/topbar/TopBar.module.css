@@ -2,17 +2,29 @@
     display:flex;
     flex-direction:row;
     justify-content:space-between;
+    
 }
 
 .searchBarWrapper {
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    border-radius: 8px;
+    border: 1px solid grey;
+    height: 20px;
+    align-items: center;
+    padding:4px 10px 4px;
+    
+
 }
 
 .input {
-    display:flex;
+    display: flex;
+    border: none;
+    background-color: transparent;
 }
 
 .img {
     display:flex;
+    width: 40px;
 }

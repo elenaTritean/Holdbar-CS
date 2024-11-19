@@ -3,17 +3,18 @@ import SideBar from '../sidebar/SideBar'
 import TopBar from '../topbar/TopBar'
 import "../../../App"
 import { Outlet } from 'react-router-dom'
+import layout from "./Layout.module.css"
 
 import { ThemeProvider } from '../../../components/styling/ThemeContext'
-import CustomersDashboard from '../../customers/customers-dashboard/CustomersDashboard'
+
 
 export default function Layout() {
 
 
     return (
-        <div>
+        <div className={layout.layoutWrapper}>
             <ThemeProvider>
-                <div className="flexContainer flexRow">
+                <div className={`flexContainer`} style={{height:"100%"}}>
                     <SideBar />
                     <div className="flexContainer flexColumn" style={{ flex: 1 }}>
                         <TopBar />

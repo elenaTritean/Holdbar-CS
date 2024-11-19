@@ -16,7 +16,7 @@ const dropdown = [
 ];
 
 export default function CustomersDashboard() {
-    
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -54,7 +54,7 @@ export default function CustomersDashboard() {
         throw new Error("Failed to fetch data");
       }
       const customerData = await response.json();
-      setData(customerData.myArray || data);
+      setData(customerData);
     } catch (error) {
       console.error("Error fetching data:", error);
       setData([]);

@@ -1,15 +1,10 @@
-.App {
-    width: 100vw;
-    height: 100%;
-    background-color: rgb(250, 250, 251);
-}
-
-body {
+html, body,#root,.app {
+    height:100%;
     margin: 0px;
     padding: 0px;
-    height: 100%;
-
 }
+
+
 
 .flexContainer {
     display: flex

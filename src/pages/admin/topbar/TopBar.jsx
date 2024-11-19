@@ -13,7 +13,9 @@ export default function TopBar() {
      
         <div className={topBar.topBarWrapper}>
             <div className={topBar.searchBarWrapper}>
-                <SearchIcon />
+                <div style={{display:"flex",width:"18px"}}>
+                    <SearchIcon />
+                </div>
                 <input type="text" placeholder="Search content" className={topBar.input}></input>
             </div>
             <img src={PlaceholderImg} className={topBar.img} alt="person" />
