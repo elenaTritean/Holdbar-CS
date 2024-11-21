@@ -3,7 +3,7 @@ import React, { createContext, useContext } from 'react';
 const theme = {
   h3: {
     fontSize: "16px",
-    lineHeight: "120%"
+    lineHeight: "120%",
   },
   h4: {
     fontSize: "0.875rem", 
@@ -16,7 +16,7 @@ const theme = {
   },
 
   greyColor:{
-    color: "rgb(181, 182, 196)",
+    color: "rgb(141, 143, 163)",
   },
 
   medium:{
@@ -24,7 +24,7 @@ const theme = {
   },
 
   normal: {
-     fontWeight: 400
+    fontWeight: 400
   }
 
 }

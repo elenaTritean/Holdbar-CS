@@ -1,7 +1,6 @@
 export const GiftcardIcon = ({style}) => {
     return(
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
-	 viewBox="0 0 24 24" style={{enableBackground:"new 0 0 24 24",...style}}>
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" viewBox="0 0 24 24" style={{enableBackground:"new 0 0 24 24",...style}}>
 
 <g>
 	<path  d="M16.8,23H7.2c-1.2,0-1.9,0-2.6-0.3c-0.6-0.3-1-0.7-1.3-1.3C3,20.7,3,20,3,18.8V12c-0.3,0-0.6-0.1-0.9-0.2

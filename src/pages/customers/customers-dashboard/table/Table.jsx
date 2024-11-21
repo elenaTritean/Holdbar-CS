@@ -32,11 +32,11 @@ export default function Table({data, columns}) {
            )}
         </thead>
 
-        <tbody {...getTableBodyProps()} className={table.tbodyWrapper} style={{ ...theme.h4, ...theme.normal }}>
+        <tbody {...getTableBodyProps()} className={table.tbodyWrapper} style={{ ...theme.h4, ...theme.greyColor }}>
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr {...row.getRowProps()} >
                 {row.cells.map((cell) => {
                   const isLastBooking = cell.column.id === "last_booking";
                   const formattedValue = isLastBooking

@@ -9,17 +9,20 @@ const topBarWrapper: string;
 const searchBarWrapper: string;
 const input: string;
 const img: string;
+const pWrapper: string;
 
 export {
 	topBarWrapper,
 	searchBarWrapper,
 	input,
-	img
+	img,
+	pWrapper
 };
 
 export default {
 	topBarWrapper,
 	searchBarWrapper,
 	input,
-	img
+	img,
+	pWrapper
 }
