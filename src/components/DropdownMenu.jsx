@@ -18,7 +18,7 @@ export default function DropdownMenu({ options, placeholder }) {
                     height: "27px",
                     minHeight: "27px",
                     alignItems: "center",
-                    maxWidth: "200px",
+                    maxWidth: "fit-content",
                     width: "100%",
                     boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)",
                     padding: "0",

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FormInput, FormProvider } from '../../../components/FormContext'
 import { useTheme } from '../../../components/styling/ThemeContext'
 import {LogoPlaceholder} from "../../../components/styling/icons/LogoPlaceholder"
@@ -7,14 +7,22 @@ import DropdownMenu from "../../../components/DropdownMenu"
 import createNew from "./CreateNewCustomerLayout.module.css"
 export default function CreateNewCustomerLayout() {
 
-    const dropdown = [
-        { value: "", label: "" },
-        { value: "", label: "" },
-        { value: "", label: "" },
-        { value: "", label: "" },
-        { value: "", label: "" },
-      ];
+    const[selectButton, setSelectButton]=useState("")
+
+    const handleButtonOnClick = (buttonDomain) =>{
+        setSelectButton(buttonDomain)
+        
+    }
+
     const theme = useTheme();
+
+    const dropdown = [
+        { value: "danish", label: "Danish" },
+        { value: "norwegian", label: "Norwegian" },
+        { value: "english", label: "English" },
+        { value: "swedish", label: "Swedish" },
+        { value: "german", label: "German" },
+      ];
     return (
         <FormProvider>
             <div>
@@ -31,7 +39,7 @@ export default function CreateNewCustomerLayout() {
                                 <div className={createNew.logoPWrapper}>
                                     <p style={{...theme.h5,...theme.greyColor}} className={createNew.companyLogoP}>Company logo</p>
                                     <div style={{marginBottom:"10px",boxSizing:"border-box"}}>
-                                        <LogoPlaceholder />
+                                        <LogoPlaceholder/>
                                     </div>
                                     <p className={createNew.p} style={{ paddingBottom:"10px",...theme.h5, ...theme.medium }}>Drag and drop the image or <span style={{color:"rgb(2, 39, 194)",paddingLeft:"3px",paddingRight:"3px"}}>browse</span> to upload</p>
                                     <p className={createNew.p} style={{ ...theme.h6, ...theme.normal,...theme.greyColor }}>Accepted files: png, jpg, jpeg, gif</p>
@@ -48,12 +56,21 @@ export default function CreateNewCustomerLayout() {
                         <div style={{display:"flex", flexDirection:"column",width:"50%",justifyContent:"flex-start"}}>
                             <h2 style={{...theme.h3,...theme.normal}} >Domain</h2>
                             <Card width="360px" height="150px">
-                                <div>
-                                    <button>Custom</button>
-                                    <button>Holdbar</button>
+                                <div className={createNew.buttonToggle}>
+                                    <button type="button" onClick={() => handleButtonOnClick("Custom")} 
+                                            className={selectButton === "Custom" ? createNew.toggleDomainOn:createNew.toggleDomainOff}>Custom</button>
+                                    <button type="button" onClick={() => handleButtonOnClick("Holdbar")}
+                                            className={selectButton === "Holdbar" ? createNew.toggleDomainOn:createNew.toggleDomainOff}>Holdbar</button>
                                 </div>
-                                <FormInput placeholder="www.companyname.com"/>
-                                <DropdownMenu options={dropdown} placeholder="Language"/>
+                                {
+                                (selectButton==="Custom")?
+                                (<FormInput label="URL" name={"CustomDomain"} placeholder="www.companyname.com"/>):
+                                (<FormInput label="URL" name={"HoldbarDomain"} placeholder="www.companyname.holdbar.com"/>)
+                                }
+                                
+                                <div style={{marginTop:"22px"}}>
+                                    <DropdownMenu options={dropdown} placeholder="Language"/>
+                                </div>
                             </Card>
                         </div>
                     </div>  
@@ -62,7 +79,7 @@ export default function CreateNewCustomerLayout() {
 
                 <div>  
                     <h2 style={{...theme.h3,...theme.normal}}>About</h2>
-                    <textarea style={{width:"100%",maxWidth:"100%"}}/>  
+                    <textarea className={createNew.textarea}/>  
                 </div>
 
             </section>

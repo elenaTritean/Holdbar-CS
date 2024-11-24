@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { useTheme } from "../components/styling/ThemeContext"
+import { ThemeProvider, useTheme } from "../components/styling/ThemeContext"
 
 
 
@@ -29,16 +29,16 @@ export const FormInput = ({ label, name, placeholder, style }) => {
       position: "relative",
       width: "100%",
       maxWidth: "100vw",
-      marginTop:"22px"
+      marginTop:"22px",
     },
 
     label: {
       position: "absolute",
-      top: "-7px", 
+      top: "-10px", 
       left: "10px", 
       backgroundColor: "white",
-      padding: "0 5px",
-      fontSize: "14px",
+      height:"2px",
+      padding: "5px",
       ...theme.greyColor,
       ...theme.h5
       
@@ -53,6 +53,9 @@ export const FormInput = ({ label, name, placeholder, style }) => {
         borderRadius:"4px",
         height:"32px",
         boxSizing:"border-box",
+        paddingLeft:"10px",
+        ...theme.greyColor,
+        ...theme.h5,
         ...style,
 
     },
@@ -61,16 +64,18 @@ export const FormInput = ({ label, name, placeholder, style }) => {
   console.log(name, style, styles)
 
   return (
-    <div style={styles.container}>
-      <label style={styles.label}>{label}</label>
-      <input
-        type="text"
-        name={name}
-        value={formState[name] || ""}
-        onChange={handleChange}
-        placeholder={placeholder}
-        style={styles.input}
-      />
-    </div>
+    <ThemeProvider>
+      <div style={styles.container}>
+        <label style={styles.label}>{label}</label>
+        <input
+          type="text"
+          name={name}
+          value={formState[name] || ""}
+          onChange={handleChange}
+          placeholder={placeholder}
+          style={styles.input}
+        />
+      </div>
+    </ThemeProvider>
   );
 };

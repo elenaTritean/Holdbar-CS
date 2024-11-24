@@ -51,5 +51,38 @@
 .buttonToggle{
     display:flex;
     flex-direction:row;
+    border:1px solid rgb(141, 143, 163);
+    border-radius: 8px;
+    background-color: none;
+    width:fit-content;
+    padding:2px;
 
+
+}
+
+.toggleDomainOff {
+        border: none;
+        background-color: white;
+        height: 24px;
+        width: 100px;
+}
+
+.toggleDomainOn {
+        border: none;
+        background-color:rgb(2, 39, 194);
+        color: white;
+        border-radius: 6px;
+        height: 24px;
+        width: 100px;
+}
+
+.textarea {
+    width:100%;
+    max-width:100%;
+    height:224px;
+    border:none;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    padding:10px;
+    font-family: "DM Sans";
 }

@@ -13,6 +13,9 @@ const p: string;
 const logoAndNameWrapper: string;
 const companyLogoP: string;
 const buttonToggle: string;
+const toggleDomainOff: string;
+const toggleDomainOn: string;
+const textarea: string;
 
 export {
 	pairWrapper,
@@ -22,7 +25,10 @@ export {
 	p,
 	logoAndNameWrapper,
 	companyLogoP,
-	buttonToggle
+	buttonToggle,
+	toggleDomainOff,
+	toggleDomainOn,
+	textarea
 };
 
 export default {
@@ -33,5 +39,8 @@ export default {
 	p,
 	logoAndNameWrapper,
 	companyLogoP,
-	buttonToggle
+	buttonToggle,
+	toggleDomainOff,
+	toggleDomainOn,
+	textarea
 }
