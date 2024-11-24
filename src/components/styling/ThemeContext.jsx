@@ -1,8 +1,13 @@
 import React, { createContext, useContext } from 'react';
 
 const theme = {
+  h1:{
+    fontSize: "1.3rem",
+    lineHeight: "120%",
+  },
+
   h3: {
-    fontSize: "16px",
+    fontSize: "1rem",
     lineHeight: "120%",
   },
   h4: {
@@ -11,7 +16,12 @@ const theme = {
   },
 
   h5: {
-    fontSize: "0.75rem", 
+    fontSize: "0.65rem", 
+    lineHeight: "120%"
+  },
+
+  h6: {
+    fontSize: "0.55rem", 
     lineHeight: "120%"
   },
 
@@ -20,7 +30,7 @@ const theme = {
   },
 
   medium:{
-    fontWeight: 600
+    fontWeight: 500
   },
 
   normal: {

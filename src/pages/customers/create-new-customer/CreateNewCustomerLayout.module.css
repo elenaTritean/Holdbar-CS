@@ -1,0 +1,55 @@
+.pairWrapper{
+    display:flex;
+    flex-direction:row;
+    padding-bottom: 100px;
+    width:100%
+}
+
+
+
+.team {
+    display:flex;
+    align-items: center;
+    flex-direction:column;    
+}
+
+.teamInputs {
+    display:flex;
+    flex-direction:row;
+}
+
+ .logoPWrapper {
+    border:1px dashed rgb(210, 210, 210);
+    border-radius: 5px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height:160px;
+    justify-content: center;
+    position:relative
+}
+
+.p{
+    padding: 0px;
+    display:flex;
+    margin:0px;
+    text-align:center;
+}
+
+.logoAndNameWrapper {
+    justify-content: center;
+}
+
+.companyLogoP{
+    position: absolute;
+    top: -17px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.buttonToggle{
+    display:flex;
+    flex-direction:row;
+
+}

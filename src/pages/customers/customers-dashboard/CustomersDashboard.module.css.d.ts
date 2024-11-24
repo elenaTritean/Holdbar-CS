@@ -10,6 +10,7 @@ const searchBarWrapper: string;
 const filtersWrapper: string;
 const yesNoButtonsWrapper: string;
 const yesNoButton: string;
+const pButton: string;
 const onboardedWrapper: string;
 const verticalLine: string;
 const select: string;
@@ -20,6 +21,7 @@ export {
 	filtersWrapper,
 	yesNoButtonsWrapper,
 	yesNoButton,
+	pButton,
 	onboardedWrapper,
 	verticalLine,
 	select
@@ -31,6 +33,7 @@ export default {
 	filtersWrapper,
 	yesNoButtonsWrapper,
 	yesNoButton,
+	pButton,
 	onboardedWrapper,
 	verticalLine,
 	select

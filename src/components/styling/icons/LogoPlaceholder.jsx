@@ -1,6 +1,6 @@
 export const LogoPlaceholder = () => {
     return (
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" >
+        <svg width="50" height="50" viewBox="0 0 60 60" fill="none" >
         <g clip-path="url(#clip0_505_1189)">
         <circle cx="30" cy="30" r="29.5" stroke="#8D8FA3"/>
         <g clip-path="url(#clip1_505_1189)">

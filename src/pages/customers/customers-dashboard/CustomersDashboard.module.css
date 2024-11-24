@@ -55,14 +55,12 @@
   padding:0px;
 }
 
-p, button {
+.pButton {
   margin:10px;
   color: grey;
 }
 
-p {
-  margin-right:8px;
-}
+
 
 .onboardedWrapper {
   display:flex;

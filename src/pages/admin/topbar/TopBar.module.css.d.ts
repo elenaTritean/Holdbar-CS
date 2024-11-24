@@ -10,13 +10,15 @@ const searchBarWrapper: string;
 const input: string;
 const img: string;
 const pWrapper: string;
+const logoPWrapper: string;
 
 export {
 	topBarWrapper,
 	searchBarWrapper,
 	input,
 	img,
-	pWrapper
+	pWrapper,
+	logoPWrapper
 };
 
 export default {
@@ -24,5 +26,6 @@ export default {
 	searchBarWrapper,
 	input,
 	img,
-	pWrapper
+	pWrapper,
+	logoPWrapper
 }

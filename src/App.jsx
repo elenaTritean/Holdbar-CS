@@ -1,6 +1,6 @@
 
 import './App.css'
-import CreateNewCustomerLayout from "./pages/customers/create-new-customer/CreateNewCustomerLayout"
+import CreateNewCustomerLayout from "./pages/customers/create-new-customer/CreateNewCustomer"
 import CustomersDashboard from './pages/customers/customers-dashboard/CustomersDashboard'
 import Giftcards from "./pages/giftcards/Giftcards"
 import Layout from './pages/admin/layout/Layout'

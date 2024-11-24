@@ -2,7 +2,7 @@ import React from 'react';
 import "../../../App.css";
 import topBar from"./TopBar.module.css";
 import { useTheme } from "../../../components/styling/ThemeContext"
-import clsx from 'clsx';
+
 
 import { SearchIcon } from '../../../components/styling/icons/SearchIcon';
 import PlaceholderImg from "../../../assets/images/placeholder.png";

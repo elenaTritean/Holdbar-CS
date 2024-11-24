@@ -88,11 +88,11 @@ export default function CustomersDashboard() {
 
         {/* Onboarded Wrapper */}
         <div className={customersDashboardStyles.onboardedWrapper}>
-          <p style={{ ...theme.h4, ...theme.normal }}>Onboarded</p>
+          <p style={{ ...theme.h4, ...theme.normal }} className={customersDashboardStyles.pButton}>Onboarded</p>
           <div className={customersDashboardStyles.yesNoButtonsWrapper}>
-            <button className={customersDashboardStyles.yesNoButton}>Yes</button>
+            <button className={`${customersDashboardStyles.yesNoButton} ${customersDashboardStyles.pButton}`}>Yes</button>
             <div className={customersDashboardStyles.verticalLine}></div>
-            <button className={customersDashboardStyles.yesNoButton}>No</button>
+            <button className={`${customersDashboardStyles.yesNoButton} ${customersDashboardStyles.pButton}`}>No</button>
           </div>
         </div>
       </div>
