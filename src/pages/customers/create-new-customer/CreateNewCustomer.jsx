@@ -14,6 +14,7 @@ export default function CreateNewCustomerLayout() {
         
     }
 
+
     const theme = useTheme();
 
     const dropdown = [
@@ -25,15 +26,15 @@ export default function CreateNewCustomerLayout() {
       ];
     return (
         <FormProvider>
-            <div>
+            <div class={createNew.mainContent}>
                 <h1 style={{...theme.h1,...theme.medium}}>New Account</h1>
                 <form>
 
             <section>
                 <div className={createNew.pairWrapper}>
-                    <div style={{display:"flex", flexDirection:"column",width:"50%",justifyContent:"flex-start"}}>
+                    <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>Profile</h2>
-                        <Card width="320px" height="220px">
+                        <Card width="320px" paddingBottom="30px">
                             <div style={{...theme.h4,...theme.normal}} className={createNew.logoAndNameWrapper}>
                                 
                                 <div className={createNew.logoPWrapper}>
@@ -53,9 +54,9 @@ export default function CreateNewCustomerLayout() {
                     
                 
                     <div>
-                        <div style={{display:"flex", flexDirection:"column",width:"50%",justifyContent:"flex-start"}}>
+                        <div className={createNew.cardAlignment}>
                             <h2 style={{...theme.h3,...theme.normal}} >Domain</h2>
-                            <Card width="360px" height="150px">
+                            <Card width="360px" paddingBottom="30px">
                                 <div className={createNew.buttonToggle}>
                                     <button type="button" onClick={() => handleButtonOnClick("Custom")} 
                                             className={selectButton === "Custom" ? createNew.toggleDomainOn:createNew.toggleDomainOff}>Custom</button>
@@ -89,18 +90,18 @@ export default function CreateNewCustomerLayout() {
             <section>
                 
                 <div className={createNew.pairWrapper}>
-                    <div>
+                    <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>Contact</h2>
-                        <Card>
+                        <Card width="320px"  paddingBottom="40px">
                             <FormInput label="Owner name" name="ownerName" />
                             <FormInput label="Email" name="email" />
                             <FormInput label="Phone number" name="phoneNumber" />
                         </Card>
                     </div>
 
-                    <div>
+                    <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>Location</h2>
-                        <Card>
+                        <Card width="320px" paddingBottom="40px">
                             <FormInput label="Address" name="address" />
                             <FormInput label="Zipcode" name="zipcode" />
                             <FormInput label="City" name="city" />
@@ -112,18 +113,28 @@ export default function CreateNewCustomerLayout() {
 
                 <hr/>
 
-                <h2 style={{...theme.h3,...theme.normal}}>Currency</h2>
-                <Card>
-                    <DropdownMenu placeholder="Currency"/>
-                </Card>
+                <div className={createNew.pairWrapper}>
+                    <div className={createNew.cardAlignment}>
 
-                <h2 style={{...theme.h3,...theme.normal}}>VAT compliance data</h2>
-                <Card>
-                    <FormInput label="Country of registration" name="countryOfRegistration" />
-                    <FormInput label="VAT number" name="vatNumber" />
-                </Card>
+                        <h2 style={{...theme.h3,...theme.normal}}>Currency</h2>
+                        <Card width="250px" paddingBottom="30px">
+                            <DropdownMenu placeholder="Currency"/>
+                        </Card>
+                    </div>
 
-                <button>Save</button>
+                    <div className={createNew.cardAlignment}>
+                        <h2 style={{...theme.h3,...theme.normal}}>VAT compliance data</h2>
+                        <Card width="340px" paddingBottom="45px">
+                            <FormInput label="Country of registration" name="countryOfRegistration" />
+                            <FormInput label="VAT number" name="vatNumber" />
+                        </Card>
+
+                    </div>
+                </div>
+                
+                <div className={createNew.saveButtonWrapper}>
+                        <button className={createNew.saveButton}>Save</button>
+                </div>
 
 
 

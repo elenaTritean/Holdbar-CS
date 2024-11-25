@@ -1,5 +1,8 @@
 .sidebarLink {
 
+    padding-top: 20px; 
+
+
     a,
     a:link {
         text-decoration: none;
@@ -19,7 +22,7 @@
 
     
     .active:hover {
-        background-color: rgb(238, 241, 253); /* Active background color */
+        background-color: rgb(238, 241, 253);
         color: rgb(2, 39, 194);
     }
 
@@ -34,9 +37,15 @@
 
 
 .wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 230px;
+    height: 100%;
     padding: 15px;
     background-color: white;
+    z-index: 999; 
+    box-sizing: border-box;
 }
 
 .logo{
@@ -46,7 +55,6 @@
 }
 
 .logoWrapper {
-    width:230px;
     margin: 24px 8px 8px;
 }
 

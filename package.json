@@ -10,6 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@lexical/code": "^0.7.6",
+    "@lexical/html": "^0.7.6",
+    "@lexical/link": "^0.7.6",
+    "@lexical/list": "^0.7.6",
+    "@lexical/markdown": "^0.7.6",
+    "@lexical/react": "^0.7.6",
+    "@lexical/rich-text": "^0.7.6",
+    "@lexical/selection": "^0.7.6",
+    "@lexical/table": "^0.7.6",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
@@ -17,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-oauth/google": "^0.12.1",
     "clsx": "^2.1.1",
+    "lexical": "^0.7.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",

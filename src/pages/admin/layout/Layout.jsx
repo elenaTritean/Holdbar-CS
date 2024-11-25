@@ -16,7 +16,7 @@ export default function Layout() {
             <ThemeProvider>
                 <div className={`flexContainer`} style={{height:"100%"}}>
                     <SideBar />
-                    <div className="flexContainer flexColumn" style={{ flex: 1, margin: "50px" }}>
+                    <div className="flexContainer flexColumn" style={{ flex: 1,  marginTop: "60px", marginLeft:"230px", padding:"30px"}}>
                         <TopBar />
                         <Outlet/>
                     </div>

@@ -1,3 +1,7 @@
+.mainContent {
+    box-sizing: border-box; 
+}
+
 .pairWrapper{
     display:flex;
     flex-direction:row;
@@ -55,7 +59,7 @@
     border-radius: 8px;
     background-color: none;
     width:fit-content;
-    padding:2px;
+    padding:4px;
 
 
 }
@@ -69,7 +73,7 @@
 
 .toggleDomainOn {
         border: none;
-        background-color:rgb(2, 39, 194);
+        background-color:rgb(24,65,233);
         color: white;
         border-radius: 6px;
         height: 24px;
@@ -86,3 +90,27 @@
     padding:10px;
     font-family: "DM Sans";
 }
+
+.cardAlignment {
+    display:flex;
+    flex-direction:column;
+    width:50%;
+    justify-content:flex-start
+  }
+
+  .saveButton {
+    border: none;
+        background-color:rgb(24,65,233);
+        color: white;
+        border-radius: 6px;
+        height: 44px;
+        width: 152px;
+        
+  }
+
+  .saveButtonWrapper{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        margin-right:70px;
+  }

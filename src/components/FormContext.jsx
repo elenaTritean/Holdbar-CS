@@ -61,7 +61,6 @@ export const FormInput = ({ label, name, placeholder, style }) => {
     },
   };
 
-  console.log(name, style, styles)
 
   return (
     <ThemeProvider>

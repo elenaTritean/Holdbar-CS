@@ -6,26 +6,29 @@
  * https://npmjs.com/vite-css-modules
  */
 const topBarWrapper: string;
+const searchIconWrapper: string;
 const searchBarWrapper: string;
 const input: string;
 const img: string;
-const pWrapper: string;
-const logoPWrapper: string;
+const infoWrapper: string;
+const divider: string;
 
 export {
 	topBarWrapper,
+	searchIconWrapper,
 	searchBarWrapper,
 	input,
 	img,
-	pWrapper,
-	logoPWrapper
+	infoWrapper,
+	divider
 };
 
 export default {
 	topBarWrapper,
+	searchIconWrapper,
 	searchBarWrapper,
 	input,
 	img,
-	pWrapper,
-	logoPWrapper
+	infoWrapper,
+	divider
 }

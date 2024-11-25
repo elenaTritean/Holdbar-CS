@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Card = ({ children, width, height }) => {
+export const Card = ({ children, width, height, paddingBottom }) => {
     const card = {
         display:"flex",
         flexDirection:"column",
@@ -8,10 +8,15 @@ export const Card = ({ children, width, height }) => {
         borderRadius: '8px',
         height: height,
         width:width,
-        padding:"30px",
+        paddingTop:"30px",
+        paddingRight:"30px",
+        paddingLeft:"30px",
+        paddingBottom:paddingBottom,        
         justifyContent:"center",
         boxShadow: "0 2px 4px rgba(0, 0, 0, 0.04)",
 
     }
+
+    console.log(card)
     return <div style={card}>{children}</div>;
   };
