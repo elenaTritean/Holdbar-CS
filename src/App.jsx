@@ -2,12 +2,13 @@
 import './App.css'
 import CreateNewCustomerLayout from "./pages/customers/create-new-customer/CreateNewCustomer"
 import CustomersDashboard from './pages/customers/customers-dashboard/CustomersDashboard'
-import Giftcards from "./pages/giftcards/Giftcards"
+import GiftcardsDashboard from './pages/giftcards/giftcards-dashboard/GiftcardsDashboard'
 import Layout from './pages/admin/layout/Layout'
 
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from './components/styling/ThemeContext'
+
 
 
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
 
             {
                 path: "/gift-cards",
-                element: <Giftcards />,
+                element: <GiftcardsDashboard />,
             },
         ]
 

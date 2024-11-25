@@ -1,0 +1,194 @@
+[
+    {
+      "user": "Tamara Purses",
+      "card_id": "345425536",      
+      "value": "500kr",
+      "amount_left": 8,
+      "exp_date":"2024-07-01T05:00:00Z",
+      "status":"Active"
+    },
+
+    {
+        "user": "Tamara Purses",
+        "card_id": "3545321112",      
+        "value": "300kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "32143566753",      
+        "value": "930kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "3246753234",      
+        "value": "200kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "4366532344",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "9765454243",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "23456343245",      
+        "value": "100kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "3256455422",      
+        "value": "100kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "765452324",      
+        "value": "983kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "435473256764",      
+        "value": "543kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "7886459765",      
+        "value": "100kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "9837587395",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "9587798453",      
+        "value": "100kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "8776437645",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "774674345",      
+        "value": "976kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Expired"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "7647642564",      
+        "value": "976kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "9867326874",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "87429736542",      
+        "value": "500kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "0843752355",      
+        "value": "500kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "0997655768",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      },
+
+
+      {
+        "user": "Tamara Purses",
+        "card_id": "08765457634",      
+        "value": "1000kr",
+        "amount_left": 8,
+        "exp_date":"2024-07-01T05:00:00Z",
+        "status":"Active"
+      }
+
+    ]
+    
+    

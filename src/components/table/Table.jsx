@@ -2,7 +2,7 @@ import React from 'react'
 import {useTable} from "react-table"
 
 import table from "./Table.module.css"
-import { useTheme } from "../../../../components/styling/ThemeContext"
+import { useTheme } from "../styling/ThemeContext"
 
 export default function Table({data, columns}) {
   
@@ -38,10 +38,12 @@ export default function Table({data, columns}) {
             return (
               <tr {...row.getRowProps()} >
                 {row.cells.map((cell) => {
-                  const isLastBooking = cell.column.id === "last_booking";
-                  const formattedValue = isLastBooking
-                    ? dateFormatter.format(new Date(cell.value)) 
-                    : cell.render("Cell");
+                 const isLastBooking = ["last_booking", "exp_date"].includes(cell.column.id);
+                 const formattedValue = isLastBooking
+                   ? dateFormatter.format(new Date(cell.value))
+                   : cell.render("Cell");
+                  
+                    
 
                   return (
                     <td {...cell.getCellProps()}>{formattedValue}</td>

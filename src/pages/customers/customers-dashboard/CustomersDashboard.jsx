@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { SearchIcon } from "../../../components/styling/icons/SearchIcon";
 import { useTheme } from "../../../components/styling/ThemeContext";
-import customersDashboardStyles from "../customers-dashboard/CustomersDashboard.module.css";
-import Table from "./table/Table";
+import customersDashboard from "../customers-dashboard/CustomersDashboard.module.css";
+import Table from "../../../components/table/Table";
 import DropdownMenu from "../../../components/DropdownMenu";
 
 // Define dropdown options array
@@ -69,16 +69,16 @@ export default function CustomersDashboard() {
   return (
     <div>
       {/* Filters Wrapper */}
-      <div className={customersDashboardStyles.filtersWrapper}>
+      <div className={customersDashboard.filtersWrapper}>
         {/* Search Bar Wrapper */}
-        <div className={customersDashboardStyles.searchBarWrapper}>
+        <div className={customersDashboard.searchBarWrapper}>
           <div style={{ display: "flex", width: "18px" }}>
             <SearchIcon />
           </div>
           <input
             type="text"
             placeholder="Search account"
-            className={customersDashboardStyles.searchBar}
+            className={customersDashboard.searchBar}
             style={{ ...theme.h4, ...theme.normal }}
           ></input>
         </div>
@@ -87,17 +87,16 @@ export default function CustomersDashboard() {
         <DropdownMenu options={dropdown} placeholder="Select country"/>
 
         {/* Onboarded Wrapper */}
-        <div className={customersDashboardStyles.onboardedWrapper}>
-          <p style={{ ...theme.h4, ...theme.normal }} className={customersDashboardStyles.pButton}>Onboarded</p>
-          <div className={customersDashboardStyles.yesNoButtonsWrapper}>
-            <button className={`${customersDashboardStyles.yesNoButton} ${customersDashboardStyles.pButton}`}>Yes</button>
-            <div className={customersDashboardStyles.verticalLine}></div>
-            <button className={`${customersDashboardStyles.yesNoButton} ${customersDashboardStyles.pButton}`}>No</button>
+        <div className={customersDashboard.onboardedWrapper}>
+          <p style={{ ...theme.h4, ...theme.normal }} className={customersDashboard.pButton}>Onboarded</p>
+          <div className={customersDashboard.yesNoButtonsWrapper}>
+            <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>Yes</button>
+            <div className={customersDashboard.verticalLine}></div>
+            <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>No</button>
           </div>
         </div>
       </div>
 
-      {/* Table Component */}
       <Table data={data} columns={columns} />
     </div>
   );
