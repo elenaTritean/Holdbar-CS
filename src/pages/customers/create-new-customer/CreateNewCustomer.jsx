@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { FormInput, FormProvider } from '../../../components/FormContext'
 import { useTheme } from '../../../components/styling/ThemeContext'
-import {LogoPlaceholder} from "../../../components/styling/icons/LogoPlaceholder"
 import { Card } from '../../../components/Card'
 import DropdownMenu from "../../../components/DropdownMenu"
 import createNew from "./CreateNewCustomerLayout.module.css"
+import { Dropzone } from './dropzone/Dropzone'
 export default function CreateNewCustomerLayout() {
 
     const[selectButton, setSelectButton]=useState("")
@@ -36,16 +36,7 @@ export default function CreateNewCustomerLayout() {
                         <h2 style={{...theme.h3,...theme.normal}}>Profile</h2>
                         <Card width="320px" paddingBottom="30px">
                             <div style={{...theme.h4,...theme.normal}} className={createNew.logoAndNameWrapper}>
-                                
-                                <div className={createNew.logoPWrapper}>
-                                    <p style={{...theme.h5,...theme.greyColor}} className={createNew.companyLogoP}>Company logo</p>
-                                    <div style={{marginBottom:"10px",boxSizing:"border-box"}}>
-                                        <LogoPlaceholder/>
-                                    </div>
-                                    <p className={createNew.p} style={{ paddingBottom:"10px",...theme.h5, ...theme.medium }}>Drag and drop the image or <span style={{color:"rgb(2, 39, 194)",paddingLeft:"3px",paddingRight:"3px"}}>browse</span> to upload</p>
-                                    <p className={createNew.p} style={{ ...theme.h6, ...theme.normal,...theme.greyColor }}>Accepted files: png, jpg, jpeg, gif</p>
-                                    <p className={createNew.p} style={{ ...theme.h6, ...theme.normal,...theme.greyColor }}>Preferably without a background and at maximum resolution.</p>
-                                </div>
+                                <Dropzone/>
 
                                 <FormInput label="Company name" name="companyName" />
                             </div>

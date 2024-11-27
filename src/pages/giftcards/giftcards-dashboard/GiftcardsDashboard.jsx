@@ -31,7 +31,7 @@ export default function GiftcardsDashboard() {
             accessor: "amount_left",
           },
           {
-            Header: "Exp Date",
+            Header: "Expiry Date",
             accessor: "exp_date",
           },
           {
