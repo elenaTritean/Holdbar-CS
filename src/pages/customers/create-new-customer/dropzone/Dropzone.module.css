@@ -9,10 +9,19 @@
         position:relative
     }
 
-.className{
+.companyLogoP{
     position: absolute;
-    top: -17px;
+    top: -23px;
     left: 10px;
     background-color: white;
     padding: 0 5px;
+}
+
+.p {
+
+    padding: 0px;
+    display:flex;
+    margin:0px;
+    text-align:center;
+
 }

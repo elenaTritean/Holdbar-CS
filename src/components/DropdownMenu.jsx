@@ -1,20 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Select from 'react-select';
 import { useTheme } from "./styling/ThemeContext";
 
-export default function DropdownMenu({ options, placeholder }) {
+
+export default function DropdownMenu({ options, placeholder}) {
     const theme = useTheme();
+
+    const [selectedOption, setSelectedOption]=useState("")
+    const [isError, setIsError] = useState(false);
+
+    const handleValidation = () => {
+        if (!selectedOption) {
+            setIsError(true); 
+        }
+    };
+
+    const handleChange = (option) => {
+        setSelectedOption(option); 
+        setIsError(false); 
+    };
 
     return (
         <Select
+            onChange={handleChange}
+            onBlur={handleValidation} 
             placeholder={placeholder}
             styles={{
                 control: (provided) => ({
                     ...provided,
+                    border: isError
+                    ? "1px solid rgb(225,51,51)" 
+                    : "1px solid rgb(194, 194, 194)", 
                     display: "flex",
                     backgroundColor: "rgb(250, 250, 251)",
                     borderRadius: "6px",
-                    border: "1px solid rgb(194, 194, 194)",
                     height: "27px",
                     minHeight: "27px",
                     alignItems: "center",
@@ -53,7 +72,8 @@ export default function DropdownMenu({ options, placeholder }) {
                     ...theme.normal,
                 }),
             }}
-            options={options} 
+            options={options}
+
         />
     );
 }

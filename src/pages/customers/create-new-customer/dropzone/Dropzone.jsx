@@ -1,11 +1,21 @@
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import dropzone from "./Dropzone.module.css"
 import { useTheme } from "../../../../components/styling/ThemeContext"
-import {LogoPlaceholder} from "../../../../components/styling/icons/LogoPlaceholder"
+import {LogoPlaceholder} from "../../../../components/styling/icons/LogoPlaceholder.module.css/LogoPlaceholder"
+
 export const Dropzone = () => {
+
+    const [files, setFiles]= useState([])
     const onDrop = useCallback(acceptedFiles => {
-        console.log(acceptedFiles)
+        if(acceptedFiles?.length){
+            setFiles(previousFiles =>[
+                ...previousFiles,
+                ...acceptedFiles.map((file) =>
+                    Object.assign(file, {preview:URL.createObjectURL(file) })
+                )
+            ])
+        }
     }, [])
 
     const theme = useTheme()
@@ -13,9 +23,8 @@ export const Dropzone = () => {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({onDrop})
 
     return (
-        <form>
             <div className={dropzone.logoPWrapper}>
-                <p style={{position: 'absolute', top: '-17px', left: '10px', background: 'white', padding: '0 5px' }} className={dropzone.companyLogoP}>
+                <p  className={dropzone.companyLogoP}>
                     Company logo
                 </p>
 
@@ -32,25 +41,21 @@ export const Dropzone = () => {
                 
                 <input {...getInputProps()}/>
                 {isDragActive ? (
-                    <>
+                    <div style={{display:"flex", flexDirection:"column"}}>
                         <LogoPlaceholder/>
                         <p style={{ textAlign:"center" }}>Drop logo here...</p>
-                    </>
+                    </div>
                     ) : (
-                    <>
-                        <LogoPlaceholder/>
-                        <p style={{ textAlign:"center"}}>
-                            Drag and drop the image or <span style={{color: 'rgb(2, 39, 194)'}}>browse</span> to upload
+                    <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
+                        <LogoPlaceholder src={files[0]?.preview}/>                        
+                        <p style={{ textAlign:"center"}}>Drag and drop the image or <span style={{color: 'rgb(2, 39, 194)'}}>browse</span> to upload
                         </p>
-                    </>    
-                        )
-                }
+                    </div> )}
+
+                <p  style={{...theme.h6,...theme.normal,...theme.greyColor}}></p>
+                <p className={dropzone.p} style={{...theme.h6,...theme.normal,...theme.greyColor}}></p>
                 </div>
 
-                <p className= {dropzone.p} style={{...theme.h6,...theme.normal,...theme.greyColor}}></p>
-                
-                <p className={dropzone.p} style={{...theme.h6,...theme.normal,...theme.greyColor}}></p>
             </div>
-        </form>
     )
 }

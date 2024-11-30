@@ -1,4 +1,7 @@
-export const LogoPlaceholder = () => {
+import placeholder from "./LogoPlaceholder.module.css"
+export const LogoPlaceholder = ({src}) => {
+
+    if(src===undefined){
     return (
         <svg width="50" height="50" viewBox="0 0 60 60" fill="none" >
         <g clipPath="url(#clip0_505_1189)">
@@ -17,5 +20,14 @@ export const LogoPlaceholder = () => {
         </defs>
         </svg>
 
-);
-};
+    )
+    }
+
+    else {
+        return(
+            <div className={placeholder.logoPlaceholder}>
+                <img src={src} style={{maxWidth:"100%"}} />
+            </div>
+        )
+    }
+}

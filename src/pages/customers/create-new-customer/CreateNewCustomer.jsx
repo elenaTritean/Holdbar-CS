@@ -11,8 +11,9 @@ export default function CreateNewCustomerLayout() {
 
     const handleButtonOnClick = (buttonDomain) =>{
         setSelectButton(buttonDomain)
-        
     }
+
+    
 
 
     const theme = useTheme();
@@ -38,7 +39,7 @@ export default function CreateNewCustomerLayout() {
                             <div style={{...theme.h4,...theme.normal}} className={createNew.logoAndNameWrapper}>
                                 <Dropzone/>
 
-                                <FormInput label="Company name" name="companyName" />
+                                <FormInput label="Company name" name="companyName" required/>
                             </div>
                         </Card>
                     </div>
@@ -56,8 +57,9 @@ export default function CreateNewCustomerLayout() {
                                 </div>
                                 {
                                 (selectButton==="Custom")?
-                                (<FormInput label="URL" name={"CustomDomain"} placeholder="www.companyname.com"/>):
-                                (<FormInput label="URL" name={"HoldbarDomain"} placeholder="www.companyname.holdbar.com"/>)
+                                (<FormInput label="URL" name={"CustomDomain"} placeholder="www.companyname.com" 
+                                    onValidate={()=>{}} required/>):
+                                (<FormInput label="URL" name={"HoldbarDomain"} placeholder="www.companyname.holdbar.com" required/>)
                                 }
                                 
                                 <div style={{marginTop:"22px"}}>
@@ -71,7 +73,7 @@ export default function CreateNewCustomerLayout() {
 
                 <div>  
                     <h2 style={{...theme.h3,...theme.normal}}>About</h2>
-                    <textarea className={createNew.textarea}/>  
+                    <textarea className={createNew.textarea} required/>  
                 </div>
 
             </section>
@@ -84,8 +86,9 @@ export default function CreateNewCustomerLayout() {
                     <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>Contact</h2>
                         <Card width="320px"  paddingBottom="40px">
-                            <FormInput label="Owner name" name="ownerName" />
-                            <FormInput label="Email" name="email" />
+                            <FormInput label="Owner name" name="ownerName" required/>
+                            <FormInput label="Email" name="email" pattern={/^[^@]+@[^@]+\.[^@]+$/} required
+                            textAid="Please include @"/>
                             <FormInput label="Phone number" name="phoneNumber" />
                         </Card>
                     </div>
@@ -93,9 +96,9 @@ export default function CreateNewCustomerLayout() {
                     <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>Location</h2>
                         <Card width="320px" paddingBottom="40px">
-                            <FormInput label="Address" name="address" />
-                            <FormInput label="Zipcode" name="zipcode" />
-                            <FormInput label="City" name="city" />
+                            <FormInput label="Address" name="address" required/>
+                            <FormInput label="Zipcode" name="zipcode" required/>
+                            <FormInput label="City" name="city" required/>
                         </Card>
                     </div>
                 </div>
@@ -116,8 +119,8 @@ export default function CreateNewCustomerLayout() {
                     <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>VAT compliance data</h2>
                         <Card width="340px" paddingBottom="45px">
-                            <FormInput label="Country of registration" name="countryOfRegistration" />
-                            <FormInput label="VAT number" name="vatNumber" />
+                            <DropdownMenu options={dropdown} placeholder="Country of registration"/>
+                            <FormInput label="VAT number" name="vatNumber" required/>
                         </Card>
 
                     </div>

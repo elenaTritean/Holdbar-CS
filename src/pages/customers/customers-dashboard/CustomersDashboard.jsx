@@ -4,7 +4,7 @@ import { useTheme } from "../../../components/styling/ThemeContext";
 import customersDashboard from "../customers-dashboard/CustomersDashboard.module.css";
 import Table from "../../../components/table/Table";
 import DropdownMenu from "../../../components/DropdownMenu";
-
+import { useCallback } from "react";
 // Define dropdown options array
 const dropdown = [
   { value: "danish", label: "Danish" },
@@ -42,7 +42,7 @@ export default function CustomersDashboard() {
 
   const theme = useTheme();
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       const response = await fetch("/DUMMY-DATA.json");
       if (!response.ok) {
@@ -56,7 +56,7 @@ export default function CustomersDashboard() {
     } finally {
       setIsLoading(false);
     }
-  };
+  });
 
   useEffect(() => {
     fetchData();
