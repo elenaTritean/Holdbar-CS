@@ -7,8 +7,6 @@
  */
 const mainContent: string;
 const pairWrapper: string;
-const team: string;
-const teamInputs: string;
 const logoPWrapper: string;
 const p: string;
 const logoAndNameWrapper: string;
@@ -19,13 +17,12 @@ const toggleDomainOn: string;
 const textarea: string;
 const cardAlignment: string;
 const saveButton: string;
+const cancelButton: string;
 const saveButtonWrapper: string;
 
 export {
 	mainContent,
 	pairWrapper,
-	team,
-	teamInputs,
 	logoPWrapper,
 	p,
 	logoAndNameWrapper,
@@ -36,14 +33,13 @@ export {
 	textarea,
 	cardAlignment,
 	saveButton,
+	cancelButton,
 	saveButtonWrapper
 };
 
 export default {
 	mainContent,
 	pairWrapper,
-	team,
-	teamInputs,
 	logoPWrapper,
 	p,
 	logoAndNameWrapper,
@@ -54,5 +50,6 @@ export default {
 	textarea,
 	cardAlignment,
 	saveButton,
+	cancelButton,
 	saveButtonWrapper
 }

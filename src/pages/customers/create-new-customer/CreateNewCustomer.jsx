@@ -1,35 +1,62 @@
 import React, { useState } from 'react'
 import { FormInput, FormProvider } from '../../../components/FormContext'
 import { useTheme } from '../../../components/styling/ThemeContext'
+import { useForm } from "../../../components/FormContext"
 import { Card } from '../../../components/Card'
 import DropdownMenu from "../../../components/DropdownMenu"
 import createNew from "./CreateNewCustomerLayout.module.css"
 import { Dropzone } from './dropzone/Dropzone'
 export default function CreateNewCustomerLayout() {
 
+
     const[selectButton, setSelectButton]=useState("")
+    const[uploadState,setUploadState] = useState("")
 
     const handleButtonOnClick = (buttonDomain) =>{
         setSelectButton(buttonDomain)
     }
 
-    
-
+    const progress={
+        setUploadState()
+    }
 
     const theme = useTheme();
 
-    const dropdown = [
+    const dropdownLanguage = [
         { value: "danish", label: "Danish" },
         { value: "norwegian", label: "Norwegian" },
         { value: "english", label: "English" },
         { value: "swedish", label: "Swedish" },
         { value: "german", label: "German" },
       ];
+
+    const dropdownCurrency = [
+        { value: "dkk", label: "DKK" },
+        { value: "gdp", label: "GDP" },
+        { value: "usd", label: "USD" },
+        { value: "nok", label: "NOK" },
+        { value: "sek", label: "SEK" },
+        { value: "eur", label: "EUR" },
+    ]
+
+    const dropdownCountryOfReg = [
+        { value: "denmark", label: "Denmark" },
+        { value: "norway", label: "Norway" },
+        { value: "united kingdom", label: "United Kingdom" },
+        { value: "sweden", label: "Sweden" },
+        { value: "germany", label: "Germany" },
+        { value: "finland", label: "Finland" },
+        { value: "italy", label: "Italy" },
+    ]
+
+    
+
     return (
         <FormProvider>
-            <div class={createNew.mainContent}>
+            <div className={createNew.mainContent}>
                 <h1 style={{...theme.h1,...theme.medium}}>New Account</h1>
-                <form>
+            
+            <form>
 
             <section>
                 <div className={createNew.pairWrapper}>
@@ -63,7 +90,7 @@ export default function CreateNewCustomerLayout() {
                                 }
                                 
                                 <div style={{marginTop:"22px"}}>
-                                    <DropdownMenu options={dropdown} placeholder="Language"/>
+                                    <DropdownMenu name={"language"} options={dropdownLanguage} placeholder="Language"/>
                                 </div>
                             </Card>
                         </div>
@@ -112,14 +139,14 @@ export default function CreateNewCustomerLayout() {
 
                         <h2 style={{...theme.h3,...theme.normal}}>Currency</h2>
                         <Card width="250px" paddingBottom="30px">
-                            <DropdownMenu placeholder="Currency"/>
+                            <DropdownMenu name={"currency"} options={dropdownCurrency} placeholder="Currency"/>
                         </Card>
                     </div>
 
                     <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>VAT compliance data</h2>
                         <Card width="340px" paddingBottom="45px">
-                            <DropdownMenu options={dropdown} placeholder="Country of registration"/>
+                            <DropdownMenu name={"CountryOfReg"} options={dropdownCountryOfReg} placeholder="Country of registration"/>
                             <FormInput label="VAT number" name="vatNumber" required/>
                         </Card>
 
@@ -127,7 +154,8 @@ export default function CreateNewCustomerLayout() {
                 </div>
                 
                 <div className={createNew.saveButtonWrapper}>
-                        <button className={createNew.saveButton}>Save</button>
+                        <SubmitButton/>
+                        <button className={createNew.cancelButton}>Cancel</button>
                 </div>
 
 
@@ -137,3 +165,50 @@ export default function CreateNewCustomerLayout() {
         </FormProvider>
     )
 }
+
+const SubmitButton =()=>{
+    
+    const {formState} = useForm ()
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        const save={
+            companyName:formState.companyName,
+            companyEmail: formState.email,
+            companyPhone: formState.phoneNumber,
+            cvrNr:formState.vatNumber,
+            ownerName:formState.ownerName,
+            //create a website input later
+            website: "",
+
+            domain:({
+            type: 'subdomain',
+            domain: "",
+            }),
+
+            storefront: ({
+            languages:[],
+            }),
+
+            defaultCurrency: "",
+            description: "",
+
+            location: ({
+            address: formState.address,
+            city: formState.city,
+            country:"" ,
+            zipCode: formState.zipcode,
+            }),
+
+            vatCompliance: {
+            lastUpdated: "",
+            country: "",
+            vatNumber: "",
+            }}
+            console.log(formState)
+            }
+
+    return(
+        <button className={createNew.saveButton} type="submit" onClick={handleSubmit}>Save</button>
+    )
+} 

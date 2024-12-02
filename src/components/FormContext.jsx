@@ -3,7 +3,6 @@ import { useTheme } from "../components/styling/ThemeContext";
 
 const FormContext = createContext();
 
-export const useForm = () => useContext(FormContext);
 
 export const FormProvider = ({ children }) => {
   const [formState, setFormState] = useState({});
@@ -17,6 +16,8 @@ export const FormProvider = ({ children }) => {
     <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
   );
 };
+
+export const useForm = () => useContext(FormContext);
 
 export const FormInput = ({ label, name, placeholder, style, textAid, pattern }) => {
   const [inputState, setInputState] = useState("default");

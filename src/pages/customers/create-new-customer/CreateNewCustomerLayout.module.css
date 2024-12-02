@@ -11,16 +11,6 @@
 
 
 
-.team {
-    display:flex;
-    align-items: center;
-    flex-direction:column;    
-}
-
-.teamInputs {
-    display:flex;
-    flex-direction:row;
-}
 
  .logoPWrapper {
     border:1px dashed rgb(210, 210, 210);
@@ -102,6 +92,17 @@
     border: none;
         background-color:rgb(24,65,233);
         color: white;
+        border-radius: 6px;
+        height: 44px;
+        width: 152px;
+        margin-right:20px;
+        
+  }
+
+  .cancelButton {
+        border:1px solid rgb(181, 181, 181);
+        color: rgb(181, 181, 181);
+        background-color: white;
         border-radius: 6px;
         height: 44px;
         width: 152px;
