@@ -88,17 +88,6 @@
     justify-content:flex-start
   }
 
-  .saveButton {
-    border: none;
-        background-color:rgb(24,65,233);
-        color: white;
-        border-radius: 6px;
-        height: 44px;
-        width: 152px;
-        margin-right:20px;
-        
-  }
-
   .cancelButton {
         border:1px solid rgb(181, 181, 181);
         color: rgb(181, 181, 181);
@@ -115,3 +104,37 @@
         flex-direction: row;
         margin-right:70px;
   }
+  .saveButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152px;
+    height: 44px;
+    background-color: rgb(24, 65, 233);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.saveButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(12, 46, 183, 0.9); /* Dark blue progress overlay */
+    width: var(--progress-width, 0%);
+    transition: width 0.3s ease; /* Smooth animation for progress */
+    z-index: 1; /* Behind text */
+}
+
+.saveButtonText {
+    position: relative;
+    z-index: 2; /* Ensure text is above the progress bar */
+    pointer-events: none; /* Prevent interfering with clicks */
+    color: white; /* Consistent color */
+}

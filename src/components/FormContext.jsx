@@ -17,6 +17,7 @@ export const FormProvider = ({ children }) => {
   );
 };
 
+
 export const useForm = () => useContext(FormContext);
 
 export const FormInput = ({ label, name, placeholder, style, textAid, pattern }) => {

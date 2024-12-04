@@ -3,19 +3,22 @@ import { useDropzone } from "react-dropzone"
 import dropzone from "./Dropzone.module.css"
 import { useTheme } from "../../../../components/styling/ThemeContext"
 import {LogoPlaceholder} from "../../../../components/styling/icons/LogoPlaceholder.module.css/LogoPlaceholder"
-import axios from "axios"
+import { useForm } from "../../../../components/FormContext"
 
 export const Dropzone = () => {
     
+    const {handleChange}=useForm();
 
     const [files, setFiles]= useState([])
     const onDrop = useCallback(acceptedFiles => {
         if(acceptedFiles?.length){
             setFiles(previousFiles =>[
                 ...previousFiles,
-                ...acceptedFiles.map((file) =>
-                    Object.assign(file, {preview:URL.createObjectURL(file) })
+                ...acceptedFiles.map((file) =>{
+                    handleChange({target:{name:"logo",value:file}})
+                    return Object.assign(file, {preview:URL.createObjectURL(file) })}              
                 )
+            
             ])
         }
     }, [])

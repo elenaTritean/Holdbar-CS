@@ -6,20 +6,20 @@ import { Card } from '../../../components/Card'
 import DropdownMenu from "../../../components/DropdownMenu"
 import createNew from "./CreateNewCustomerLayout.module.css"
 import { Dropzone } from './dropzone/Dropzone'
+import axios from 'axios'
+import { Navigate } from 'react-router-dom'
+
+
 export default function CreateNewCustomerLayout() {
 
-
     const[selectButton, setSelectButton]=useState("")
-    const[uploadState,setUploadState] = useState("")
+
 
     const handleButtonOnClick = (buttonDomain) =>{
         setSelectButton(buttonDomain)
     }
 
-    const progress={
-        setUploadState()
-    }
-
+        
     const theme = useTheme();
 
     const dropdownLanguage = [
@@ -28,7 +28,7 @@ export default function CreateNewCustomerLayout() {
         { value: "english", label: "English" },
         { value: "swedish", label: "Swedish" },
         { value: "german", label: "German" },
-      ];
+    ];
 
     const dropdownCurrency = [
         { value: "dkk", label: "DKK" },
@@ -40,13 +40,13 @@ export default function CreateNewCustomerLayout() {
     ]
 
     const dropdownCountryOfReg = [
-        { value: "denmark", label: "Denmark" },
-        { value: "norway", label: "Norway" },
-        { value: "united kingdom", label: "United Kingdom" },
-        { value: "sweden", label: "Sweden" },
-        { value: "germany", label: "Germany" },
-        { value: "finland", label: "Finland" },
-        { value: "italy", label: "Italy" },
+        { value: "dk", label: "Denmark" },
+        { value: "no", label: "Norway" },
+        { value: "gb", label: "United Kingdom" },
+        { value: "se", label: "Sweden" },
+        { value: "de", label: "Germany" },
+        { value: "fi", label: "Finland" },
+        { value: "it", label: "Italy" },
     ]
 
     
@@ -100,7 +100,7 @@ export default function CreateNewCustomerLayout() {
 
                 <div>  
                     <h2 style={{...theme.h3,...theme.normal}}>About</h2>
-                    <textarea className={createNew.textarea} required/>  
+                    <textarea className={createNew.textarea} name={"description"} required/>  
                 </div>
 
             </section>
@@ -114,9 +114,9 @@ export default function CreateNewCustomerLayout() {
                         <h2 style={{...theme.h3,...theme.normal}}>Contact</h2>
                         <Card width="320px"  paddingBottom="40px">
                             <FormInput label="Owner name" name="ownerName" required/>
-                            <FormInput label="Email" name="email" pattern={/^[^@]+@[^@]+\.[^@]+$/} required
+                            <FormInput label="Email" name="companyEmail" pattern={/^[^@]+@[^@]+\.[^@]+$/} required
                             textAid="Please include @"/>
-                            <FormInput label="Phone number" name="phoneNumber" />
+                            <FormInput label="Phone number" name="companyPhone" />
                         </Card>
                     </div>
 
@@ -124,7 +124,7 @@ export default function CreateNewCustomerLayout() {
                         <h2 style={{...theme.h3,...theme.normal}}>Location</h2>
                         <Card width="320px" paddingBottom="40px">
                             <FormInput label="Address" name="address" required/>
-                            <FormInput label="Zipcode" name="zipcode" required/>
+                            <FormInput label="Zipcode" name="zipCode" required/>
                             <FormInput label="City" name="city" required/>
                         </Card>
                     </div>
@@ -146,7 +146,7 @@ export default function CreateNewCustomerLayout() {
                     <div className={createNew.cardAlignment}>
                         <h2 style={{...theme.h3,...theme.normal}}>VAT compliance data</h2>
                         <Card width="340px" paddingBottom="45px">
-                            <DropdownMenu name={"CountryOfReg"} options={dropdownCountryOfReg} placeholder="Country of registration"/>
+                            <DropdownMenu name={"country"} options={dropdownCountryOfReg} placeholder="Country of registration"/>
                             <FormInput label="VAT number" name="vatNumber" required/>
                         </Card>
 
@@ -154,7 +154,7 @@ export default function CreateNewCustomerLayout() {
                 </div>
                 
                 <div className={createNew.saveButtonWrapper}>
-                        <SubmitButton/>
+                        <SubmitButton />
                         <button className={createNew.cancelButton}>Cancel</button>
                 </div>
 
@@ -163,52 +163,80 @@ export default function CreateNewCustomerLayout() {
                 </form>
             </div>
         </FormProvider>
-    )
-}
+    )}
 
 const SubmitButton =()=>{
+
+    const [uploadProgress, setUploadProgress] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [redirect, setRedirect] = useState(false);
     
     const {formState} = useForm ()
 
+    const url = "https://fuh1mfyoz3.execute-api.eu-west-1.amazonaws.com/sudo/customers/";
+        const config = {
+            onUploadProgress: (progressEvent) => {
+                const percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                );
+            setUploadProgress(percentCompleted);
+            },
+        };  
+
     const handleSubmit=(e)=>{
-        e.preventDefault();
-        const save={
-            companyName:formState.companyName,
-            companyEmail: formState.email,
-            companyPhone: formState.phoneNumber,
-            cvrNr:formState.vatNumber,
-            ownerName:formState.ownerName,
-            //create a website input later
-            website: "",
 
-            domain:({
-            type: 'subdomain',
-            domain: "",
-            }),
+            e.preventDefault();
+            if (isSubmitting) return; 
+            setIsSubmitting(true);
+            setUploadProgress(0); 
 
-            storefront: ({
-            languages:[],
-            }),
 
-            defaultCurrency: "",
-            description: "",
+        const form = new FormData();
+        form.append("companyName",formState.companyName)
+        form.append("language",formState.language)
+        form.append("description",formState.description??"")
+        form.append("ownerName",formState.ownerName)
+        form.append("companyEmail",formState.companyEmail)
+        form.append("companyPhone",formState.companyPhone)
+        form.append("address",formState.address)
+        form.append("zipCode",formState.zipCode)
+        form.append("city",formState.city)
+        form.append("currency",formState.currency)
+        form.append("country",formState.country)
+        form.append("vatNumber",formState.vatNumber)
 
-            location: ({
-            address: formState.address,
-            city: formState.city,
-            country:"" ,
-            zipCode: formState.zipcode,
-            }),
+        form.append("logo",formState.logo)
 
-            vatCompliance: {
-            lastUpdated: "",
-            country: "",
-            vatNumber: "",
-            }}
-            console.log(formState)
-            }
+
+        axios
+        .put(url, form, config)
+        .then((response) => {
+            console.log("Upload successful", response.data);
+            setUploadProgress(null); 
+            setRedirect(true);
+        })
+        .catch((error) => {
+            alert("Upload failed");
+            console.error(error);
+            setUploadProgress(null);
+        })
+        .finally(() => {
+            setIsSubmitting(false); 
+        });
+    }
+    
+    if (redirect) {
+        return <Navigate to="/customers" replace={true} />
+    }
+        
+
+        
 
     return(
-        <button className={createNew.saveButton} type="submit" onClick={handleSubmit}>Save</button>
+        <button className={createNew.saveButton} type="submit" style={{ '--progress-width': `${uploadProgress ?? 0}%` }} onClick={handleSubmit} disabled={isSubmitting}>
+            <span className="saveButtonText">
+                {isSubmitting ? `Saving... ${uploadProgress}%` : "Save"}
+            </span>
+        </button>
     )
 } 

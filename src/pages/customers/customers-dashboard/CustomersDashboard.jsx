@@ -5,7 +5,8 @@ import customersDashboard from "../customers-dashboard/CustomersDashboard.module
 import Table from "../../../components/table/Table";
 import DropdownMenu from "../../../components/DropdownMenu";
 import { useCallback } from "react";
-// Define dropdown options array
+import { FormProvider } from "../../../components/FormContext";
+
 const dropdown = [
   { value: "danish", label: "Danish" },
   { value: "norwegian", label: "Norwegian" },
@@ -67,6 +68,7 @@ export default function CustomersDashboard() {
   }
 
   return (
+    <FormProvider>
     <div>
       {/* Filters Wrapper */}
       <div className={customersDashboard.filtersWrapper}>
@@ -99,5 +101,6 @@ export default function CustomersDashboard() {
 
       <Table data={data} columns={columns} />
     </div>
+    </FormProvider>
   );
 }
