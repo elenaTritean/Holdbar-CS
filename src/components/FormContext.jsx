@@ -17,9 +17,10 @@ export const FormProvider = ({ children }) => {
   );
 };
 
+
 export const useForm = () => useContext(FormContext);
 
-export const FormInput = ({ label, name, placeholder, style, textAid, pattern }) => {
+export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur }) => {
   const [inputState, setInputState] = useState("default");
   const [isError, setIsError] = useState(false);
   const { formState, handleChange } = useForm();
@@ -35,6 +36,7 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern })
       setIsError(false);
     }
   };
+
 
   const styles = {
     container: {
@@ -106,12 +108,12 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern })
           ...(inputState === "active"
             ? styles.onActiveLabel
             : inputState === "hover"
-            ? styles.onHoverLabel
-            : inputState === "error"
-            ? styles.onErrorLabel
-            : inputState === "success"
-            ? styles.onSuccessLabel
-            : {}),
+              ? styles.onHoverLabel
+              : inputState === "error"
+                ? styles.onErrorLabel
+                : inputState === "success"
+                  ? styles.onSuccessLabel
+                  : {}),
         }}
       >
         {label}
@@ -123,10 +125,11 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern })
         onChange={(e) => {
           handleChange(e);
           if (isError) {
-            handleValidation(); 
+            handleValidation();
           }
         }}
-        onBlur={handleValidation}
+        onBlur={() => { handleValidation(); if (onBlur) onBlur(formState[name]) }}
+
         placeholder={placeholder}
         onMouseEnter={() => setInputState((prev) => (prev === "active" ? "active" : "hover"))}
         onFocus={() => setInputState("active")}
@@ -137,17 +140,17 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern })
           ...(inputState === "active"
             ? styles.onActive
             : inputState === "hover"
-            ? styles.onHover
-            : inputState === "error"
-            ? styles.onError
-            : inputState === "success"
-            ? styles.onSuccess
-            : {}),
+              ? styles.onHover
+              : inputState === "error"
+                ? styles.onError
+                : inputState === "success"
+                  ? styles.onSuccess
+                  : {}),
         }}
       />
-     <p style={isError ? { color: "rgb(225,51,51)",...theme.h5 } : { display: "none" }}>
-      {textAid}
-    </p>
+      <p style={isError ? { color: "rgb(225,51,51)", ...theme.h5 } : { display: "none" }}>
+        {textAid}
+      </p>
     </div>
   );
 };

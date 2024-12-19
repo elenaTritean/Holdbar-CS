@@ -16,9 +16,10 @@ const toggleDomainOff: string;
 const toggleDomainOn: string;
 const textarea: string;
 const cardAlignment: string;
-const saveButton: string;
 const cancelButton: string;
 const saveButtonWrapper: string;
+const saveButton: string;
+const saveButtonText: string;
 
 export {
 	mainContent,
@@ -32,9 +33,10 @@ export {
 	toggleDomainOn,
 	textarea,
 	cardAlignment,
-	saveButton,
 	cancelButton,
-	saveButtonWrapper
+	saveButtonWrapper,
+	saveButton,
+	saveButtonText
 };
 
 export default {
@@ -49,7 +51,8 @@ export default {
 	toggleDomainOn,
 	textarea,
 	cardAlignment,
-	saveButton,
 	cancelButton,
-	saveButtonWrapper
+	saveButtonWrapper,
+	saveButton,
+	saveButtonText
 }

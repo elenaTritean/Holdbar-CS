@@ -5,7 +5,8 @@ import customersDashboard from "../customers-dashboard/CustomersDashboard.module
 import Table from "../../../components/table/Table";
 import DropdownMenu from "../../../components/DropdownMenu";
 import { useCallback } from "react";
-// Define dropdown options array
+import { FormProvider } from "../../../components/FormContext";
+
 const dropdown = [
   { value: "danish", label: "Danish" },
   { value: "norwegian", label: "Norwegian" },
@@ -44,7 +45,7 @@ export default function CustomersDashboard() {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await fetch("/DUMMY-DATA.json");
+      const response = await fetch("https://fuh1mfyoz3.execute-api.eu-west-1.amazonaws.com/sudo/customers/");
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
@@ -67,37 +68,39 @@ export default function CustomersDashboard() {
   }
 
   return (
-    <div>
-      {/* Filters Wrapper */}
-      <div className={customersDashboard.filtersWrapper}>
-        {/* Search Bar Wrapper */}
-        <div className={customersDashboard.searchBarWrapper}>
-          <div style={{ display: "flex", width: "18px" }}>
-            <SearchIcon />
+    <FormProvider>
+      <div>
+        {/* Filters Wrapper */}
+        <div className={customersDashboard.filtersWrapper}>
+          {/* Search Bar Wrapper */}
+          <div className={customersDashboard.searchBarWrapper}>
+            <div style={{ display: "flex", width: "18px" }}>
+              <SearchIcon />
+            </div>
+            <input
+              type="text"
+              placeholder="Search account"
+              className={customersDashboard.searchBar}
+              style={{ ...theme.h4, ...theme.normal }}
+            ></input>
           </div>
-          <input
-            type="text"
-            placeholder="Search account"
-            className={customersDashboard.searchBar}
-            style={{ ...theme.h4, ...theme.normal }}
-          ></input>
+
+          {/* Pass the dropdown array as a prop to DropdownMenu */}
+          <DropdownMenu options={dropdown} placeholder="Select country" />
+
+          {/* Onboarded Wrapper */}
+          <div className={customersDashboard.onboardedWrapper}>
+            <p style={{ ...theme.h4, ...theme.normal }} className={customersDashboard.pButton}>Onboarded</p>
+            <div className={customersDashboard.yesNoButtonsWrapper}>
+              <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>Yes</button>
+              <div className={customersDashboard.verticalLine}></div>
+              <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>No</button>
+            </div>
+          </div>
         </div>
 
-        {/* Pass the dropdown array as a prop to DropdownMenu */}
-        <DropdownMenu options={dropdown} placeholder="Select country"/>
-
-        {/* Onboarded Wrapper */}
-        <div className={customersDashboard.onboardedWrapper}>
-          <p style={{ ...theme.h4, ...theme.normal }} className={customersDashboard.pButton}>Onboarded</p>
-          <div className={customersDashboard.yesNoButtonsWrapper}>
-            <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>Yes</button>
-            <div className={customersDashboard.verticalLine}></div>
-            <button className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}>No</button>
-          </div>
-        </div>
+        <Table data={data} columns={columns} />
       </div>
-
-      <Table data={data} columns={columns} />
-    </div>
+    </FormProvider>
   );
 }
