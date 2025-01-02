@@ -1,14 +1,19 @@
 import React, { createContext, useContext, useState } from "react";
 import { useTheme } from "../components/styling/ThemeContext";
 
+//FormContext is created as an empty object to be shared across components
 const FormContext = createContext();
 
-
+//FormProvider specifies the FormContext object's value
 export const FormProvider = ({ children }) => {
-  const [formState, setFormState] = useState({});
+  const [formState, setFormState] = useState({});//initialized and empty state objects for the form
 
-  const handleChange = ({ target: { name, value } }) =>
-    setFormState((previous) => ({ ...previous, [name]: value }));
+  //HandleChange updates formState when a form field changes
+  const handleChange = ({ target: { name, value } }) =>//The parameter used in the function is a destructured object. It destructures name and value from the target object
+    setFormState( //setFormState is the function used to update the form's state.
+      (previous) => // setFormState is called with another function that guarantees the update is based on the previous state.
+        ({ ...previous, [name]: value }));// Javascript object literal. It is used to create a new object.
+  //With the "..." spread operator, 
 
   const contextValue = { formState, handleChange };
 
