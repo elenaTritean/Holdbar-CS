@@ -130,7 +130,7 @@ export default function CreateNewCustomerLayout() {
                                             </div>) :
                                             (<div>
                                                 <FormInput label="URL" name={"UnderstoryDomain"} placeholder="www.companyname.understory.io" onBlur={validateUnderstoryDomain} onChange={handleUnderstoryInputChange} value={understoryDomain}
-                                                    textAid={if(validationStatus === "available") {return ("Domain is available")} elseif(validationStatus === "unavailable"){"Domain is already taken"} elseif(validationStatus==="error"){"Error validating domain"}} required />
+                                                    textAid={(validationStatus === "unavailable") ?"Domain is already taken" : (validationStatus==="error") ? "Error validating domain":"Domain is available" } required />
 
                                             </div>)}
 
