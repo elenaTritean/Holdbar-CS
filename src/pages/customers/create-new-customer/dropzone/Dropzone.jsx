@@ -2,7 +2,7 @@ import { useCallback, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import dropzone from "./Dropzone.module.css"
 import { useTheme } from "../../../../components/styling/ThemeContext"
-import {LogoPlaceholder} from "../../../../components/styling/icons/LogoPlaceholder.module.css/LogoPlaceholder"
+import {LogoPlaceholder} from "../../../../components/styling/icons/LogoPlaceholder/LogoPlaceholder"
 import { useForm } from "../../../../components/FormContext"
 
 export const Dropzone = () => {

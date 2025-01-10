@@ -25,22 +25,12 @@ export const FormProvider = ({ children }) => {
 
 export const useForm = () => useContext(FormContext);
 
-export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur }) => {
+export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur, type }) => {
   const [inputState, setInputState] = useState("default");
   const [isError, setIsError] = useState(false);
   const { formState, handleChange } = useForm();
   const theme = useTheme();
 
-  const handleValidation = () => {
-    const value = formState[name] || "";
-    if (!value || (pattern && !new RegExp(pattern).test(value))) {
-      setInputState("error");
-      setIsError(true);
-    } else {
-      setInputState("success");
-      setIsError(false);
-    }
-  };
 
 
   const styles = {
@@ -124,21 +114,22 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
         {label}
       </label>
       <input
-        type="text"
+        type={type}
         name={name}
         value={formState[name] || ""}
-        onChange={(e) => {
-          handleChange(e);
-          if (isError) {
-            handleValidation();
-          }
-        }}
-        onBlur={() => { handleValidation(); if (onBlur) onBlur(formState[name]) }}
+        onBlur={() => { const value = formState[name] || "";
+          if (required && !value ) {
+            setInputState("error");
+            setIsError(true);
+          } else {
+            setInputState("success");
+            setIsError(false);
+          }}}
 
         placeholder={placeholder}
         onMouseEnter={() => setInputState((prev) => (prev === "active" ? "active" : "hover"))}
         onFocus={() => setInputState("active")}
-        onMouseLeave={() => setInputState((prev) => (prev === "active" ? "active" : "default"))}
+        onMouseLeave={() => setInputState((prev) => (prev === "success" ? "active" : "default"))}
 
         style={{
           ...styles.input,
@@ -152,6 +143,8 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
                   ? styles.onSuccess
                   : {}),
         }}
+
+        required
       />
       <p style={isError ? { color: "rgb(225,51,51)", ...theme.h5 } : { display: "none" }}>
         {textAid}

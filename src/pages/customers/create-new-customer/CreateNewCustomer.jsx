@@ -29,22 +29,10 @@ export default function CreateNewCustomerLayout() {
         setValidationStatus(null);
     }
 
-    const validateCustomDomain = () => {
-        const isUnderstoryDomain = understoryDomain.endsWith(".understory.io");
 
-        if (!isUnderstoryDomain) {
-            setIsChecking(false);
-            return
-        }
-    }
-
+/*
     const validateUnderstoryDomain = async () => {
-
-        if (!understoryDomain.trim()) return;
-        console.log("hey")
-        setIsChecking(true);
-
-
+          
         try {
             const response = await axios.get("https://api.app.dev.understory.io/sudo/domains", { params: { domain: understoryDomain.trim(), type: "subdomain" } });
             if (response.status == 200) {
@@ -59,6 +47,7 @@ export default function CreateNewCustomerLayout() {
             setIsChecking(false);
         }
     }
+*/
 
     const theme = useTheme();
 
@@ -126,7 +115,6 @@ export default function CreateNewCustomerLayout() {
                                         {selectButton === "Custom" ?
                                             (<div>
                                                 <FormInput label="URL" name={"CustomDomain"} placeholder="www.companyname.com" onBlur={validateCustomDomain} onChange={handleUnderstoryInputChange} value={understoryDomain} required />
-                                                {validationStatus === "error" && (<p style={{ color: "red" }}>This is an Understory domain.</p>)}
                                             </div>) :
                                             (<div>
                                                 <FormInput label="URL" name={"UnderstoryDomain"} placeholder="www.companyname.understory.io" onBlur={validateUnderstoryDomain} onChange={handleUnderstoryInputChange} value={understoryDomain}
@@ -154,9 +142,6 @@ export default function CreateNewCustomerLayout() {
 
                     <section>
 
-                        <div className={createNew.pairWrapper}>
-
-                            <section>
 
                                 <div className={createNew.pairWrapper}>
                                     <div className={createNew.cardAlignment}>
@@ -165,21 +150,20 @@ export default function CreateNewCustomerLayout() {
                                             <FormInput label="Owner name" name="ownerName" required />
                                             <FormInput label="Email" name="companyEmail" pattern={/^[^@]+@[^@]+\.[^@]+$/} required
                                                 textAid="Please include @" />
-                                            <FormInput label="Phone number" name="companyPhone" />
+                                            <FormInput type="tel" label="Phone number" name="companyPhone" />
                                         </Card>
                                     </div>
 
-                                </div>
+                                
 
-                            </section>
-                            <div className={createNew.cardAlignment}>
-                                <h2 style={{ ...theme.h3, ...theme.normal }}>Location</h2>
-                                <Card width="320px" paddingBottom="40px">
-                                    <FormInput label="Address" name="address" required />
-                                    <FormInput label="Zipcode" name="zipCode" required />
-                                    <FormInput label="City" name="city" required />
-                                </Card>
-                            </div>
+                                    <div className={createNew.cardAlignment}>
+                                        <h2 style={{ ...theme.h3, ...theme.normal }}>Location</h2>
+                                        <Card width="320px" paddingBottom="40px">
+                                            <FormInput label="Address" name="address" required />
+                                            <FormInput label="Zipcode" name="zipCode" required />
+                                            <FormInput label="City" name="city" required />
+                                        </Card>
+                                    </div>
                         </div>
 
                     </section>

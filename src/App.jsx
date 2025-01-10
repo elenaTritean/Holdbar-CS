@@ -24,12 +24,12 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/create-new-customer",
+                path: "/customers/new",
                 element: <CreateNewCustomerLayout />,
             },
 
             {
-                path: "/gift-cards",
+                path: "/giftcards",
                 element: <GiftcardsDashboard />,
             },
         ]
