@@ -4,8 +4,8 @@ import { useTheme } from "../../../components/styling/ThemeContext";
 import customersDashboard from "../customers-dashboard/CustomersDashboard.module.css";
 import Table from "../../../components/table/Table";
 import DropdownMenu from "../../../components/DropdownMenu";
-import { useCallback } from "react";
 import { FormProvider } from "../../../components/FormContext";
+
 
 const dropdown = [
   { value: "danish", label: "Danish" },
@@ -16,18 +16,28 @@ const dropdown = [
 ];
 
 export default function CustomersDashboard() {
+
+  const theme = useTheme();
+
+  const queryParams = new URLSearchParams(location.search);
+
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const columns = React.useMemo(
     () => [
       {
+        Header: "",
+        accessor: "pictures.logo.url",
+      },
+      {
         Header: "Name",
         accessor: "name",
       },
       {
         Header: "Last Booking",
-        accessor: "last_booking",
+        accessor: "lastUpdated",
       },
       {
         Header: "Upcoming Events",
@@ -35,29 +45,31 @@ export default function CustomersDashboard() {
       },
       {
         Header: "Onboarded",
-        accessor: "onboarded",
+        accessor: "onboardingCompleted",
       },
     ],
     []
   );
 
-  const theme = useTheme();
-
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     try {
-      const response = await fetch("https://fuh1mfyoz3.execute-api.eu-west-1.amazonaws.com/sudo/customers/");
+      const initialCountry = queryParams.get ("country");
+      const initialOnboarded = queryParams.get("isOnboarded");
+      const initialSort = queryParams.get("sortby") ||"name";
+      const initialSortOrder = queryParams.get ("sort") || "asc";
+      const response = await fetch(`https://api.app.dev.understory.io/sudo/customers/?isOnboarded=${initialOnboarded}&sort=${initialSortOrder}&sortby=${initialSort}&country=${initialCountry}`);
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
       const customerData = await response.json();
-      setData(customerData);
+      setData(customerData.items);
     } catch (error) {
       console.error("Error fetching data:", error);
       setData([]);
     } finally {
       setIsLoading(false);
     }
-  });
+  };
 
   useEffect(() => {
     fetchData();

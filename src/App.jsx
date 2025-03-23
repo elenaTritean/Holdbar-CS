@@ -8,7 +8,7 @@ import Layout from './pages/admin/layout/Layout'
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ThemeProvider } from './components/styling/ThemeContext'
-
+import { FormProvider } from './components/FormContext'
 
 
 
@@ -24,8 +24,11 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "/customers/new",
-                element: <CreateNewCustomerLayout />,
+                path: "/new",
+                element:  
+                <FormProvider>
+                    <CreateNewCustomerLayout />
+                </FormProvider>
             },
 
             {
@@ -44,9 +47,11 @@ function App() {
     return (
 
         <div className="app">
+
             <ThemeProvider>
                 <RouterProvider router={router} />
             </ThemeProvider>
+
         </div >
 
     )

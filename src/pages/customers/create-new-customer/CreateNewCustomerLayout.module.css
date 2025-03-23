@@ -126,15 +126,31 @@
     top: 0;
     left: 0;
     height: 100%;
-    background-color: rgba(12, 46, 183, 0.9); /* Dark blue progress overlay */
+    background-color: rgba(12, 46, 183, 0.9); 
     width: var(--progress-width, 0%);
-    transition: width 0.3s ease; /* Smooth animation for progress */
-    z-index: 1; /* Behind text */
+    transition: width 0.3s ease; 
+    z-index: 1; 
 }
 
 .saveButtonText {
     position: relative;
-    z-index: 2; /* Ensure text is above the progress bar */
-    pointer-events: none; /* Prevent interfering with clicks */
-    color: white; /* Consistent color */
+    z-index: 2; 
+    pointer-events: none; 
+    color: white; 
 }
+
+.domainLabel {
+    position:relative;
+    display: block;
+    padding-right:70px;
+}
+    
+.domainLabel:after {
+        content: ".understory.io";
+        position: absolute;
+        top:30px;
+        left: 205px;
+        display: block;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 12px;
+    }

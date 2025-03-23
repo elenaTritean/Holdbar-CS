@@ -25,9 +25,10 @@ export const FormProvider = ({ children }) => {
 
 export const useForm = () => useContext(FormContext);
 
-export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur, type }) => {
+export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur, required, type }) => {
   const [inputState, setInputState] = useState("default");
   const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(); 
   const { formState, handleChange } = useForm();
   const theme = useTheme();
 
@@ -59,7 +60,7 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
       border: "1.2px solid rgb(220,220,220)",
       boxSizing: "border-box",
       paddingLeft: "10px",
-      ...theme.greyColor,
+      color:"black",
       ...theme.h5,
       ...style,
       outline: "none",
@@ -89,6 +90,14 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
     onActiveLabel: {
       color: "rgb(24,65,233)",
     },
+
+    "::placeholder": {
+  color: "gray", 
+  ...theme.h5,
+
+},
+
+
   };
 
   return (
@@ -116,13 +125,18 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
       <input
         type={type}
         name={name}
-        value={formState[name] || ""}
+        defaultValue={""}
+        onChange={handleChange}
         onBlur={() => { const value = formState[name] || "";
+          onBlur();
           if (required && !value ) {
             setInputState("error");
             setIsError(true);
+            setIsSuccess(false)
+
           } else {
             setInputState("success");
+            setIsSuccess(true)
             setIsError(false);
           }}}
 
@@ -146,7 +160,7 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
 
         required
       />
-      <p style={isError ? { color: "rgb(225,51,51)", ...theme.h5 } : { display: "none" }}>
+      <p style={isError ? { color: "rgb(225,51,51)", ...theme.h5 } : isSuccess ? { color: "rgb(14,217,108)", ...theme.h5 } : { display: "none" }}>
         {textAid}
       </p>
     </div>

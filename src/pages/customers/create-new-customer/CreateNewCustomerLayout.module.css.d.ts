@@ -20,6 +20,7 @@ const cancelButton: string;
 const saveButtonWrapper: string;
 const saveButton: string;
 const saveButtonText: string;
+const domainLabel: string;
 
 export {
 	mainContent,
@@ -36,7 +37,8 @@ export {
 	cancelButton,
 	saveButtonWrapper,
 	saveButton,
-	saveButtonText
+	saveButtonText,
+	domainLabel
 };
 
 export default {
@@ -54,5 +56,6 @@ export default {
 	cancelButton,
 	saveButtonWrapper,
 	saveButton,
-	saveButtonText
+	saveButtonText,
+	domainLabel
 }

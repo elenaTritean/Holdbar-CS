@@ -1,6 +1,5 @@
 import React from 'react'
 import {useTable} from "react-table"
-
 import table from "./Table.module.css"
 import { useTheme } from "../styling/ThemeContext"
 
@@ -23,11 +22,15 @@ export default function Table({data, columns}) {
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()} style={{...theme.h5,...theme.normal}}>
+                <th {...column.getHeaderProps(column.getSortByToggleProps)} style={{...theme.h5,...theme.normal}} onClick={column.initialSortOrder}>
                   {column.render("Header")}
+                  <button
+                    
+                  />
                 </th>
                 ))} 
             </tr>
+
            )
            )}
         </thead>
@@ -38,19 +41,12 @@ export default function Table({data, columns}) {
             return (
               <tr {...row.getRowProps()} >
                 {row.cells.map((cell) => {
-                 const isLastBooking = ["last_booking", "exp_date"].includes(cell.column.id);
-                 const formattedValue = isLastBooking
-                   ? dateFormatter.format(new Date(cell.value))
-                   : cell.render("Cell");
-                  
-                    
-
                   return (
-                    <td {...cell.getCellProps()}>{formattedValue}</td>
-                  );
-                })}
+                    <td data-label={cell.column.id} {...cell.getCellProps()}>
+                      {cell.render("Cell")}
+                    </td>)})}
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>

@@ -8,55 +8,106 @@ import createNew from "./CreateNewCustomerLayout.module.css"
 import { Dropzone } from './dropzone/Dropzone'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom'
+import danishFlag from "../../../assets/images/icon_dkflag.svg" 
+import norwayFlag from "../../../assets/images/icon_norwayflag.svg"
+import germanFlag from "../../../assets/images/icon_germanflag.svg"
+import swedishFlag from "../../../assets/images/icon_swedishflag.svg"
+import ukFlag from "../../../assets/images/icon_ukflag.svg"
+
 
 
 export default function CreateNewCustomerLayout() {
 
-    const [selectButton, setSelectButton] = useState("")
-    const [understoryDomain, setUnderstoryDomain] = useState("");
-    const [validationStatus, setValidationStatus] = useState(null);
-    const [isChecking, setIsChecking] = useState(false);
+
+    const [selectDomainType, setSelectDomainType] = useState("Understory")
+    const [validationStatus, setValidationStatus] = useState();
+
+    const { formState } = useForm()
 
 
 
-    const handleButtonOnClick = (buttonDomain) => {
-        setSelectButton(buttonDomain)
-        setValidationStatus(null);
-    }
-
-    const handleUnderstoryInputChange = (e) => {
-        setUnderstoryDomain(e.target.value);
-        setValidationStatus(null);
+    const handleButtonOnClick = (domainType) => {
+        setSelectDomainType(domainType)
     }
 
 
 /*
-    const validateUnderstoryDomain = async () => {
-          
-        try {
-            const response = await axios.get("https://api.app.dev.understory.io/sudo/domains", { params: { domain: understoryDomain.trim(), type: "subdomain" } });
-            if (response.status == 200) {
-                setValidationStatus("available");
-            } else {
-                setValidationStatus("unavailable");
-            }
-        } catch (error) {
-            console.error("URL written is not in the Understory domain");
-            setValidationStatus("error");
-        } finally {
-            setIsChecking(false);
-        }
-    }
+Description
+When an error occurs, JavaScript will stop and generate an error message.
+
+Note
+The technical term for this is is: JavaScript throws an exception.
+
+JavaScript creates an Error object with two properties: name and message.
+
+The try...catch...finally statements combo handles errors without stopping JavaScript.
+
+The try statement defines the code block to run (to try).
+
+The catch statement defines a code block to handle any error.
+
+The finally statement defines a code block to run regardless of the result.
+
+The throw statement defines a custom error.
+
+Both catch and finally are optional, but you must use one of them.
+
+Note
+Using throw with try and catch, lets you control program flow and generate custom error messages.*/
+
+/* Async Syntax
+The keyword async before a function makes the function return a promise:*/
+
+/*"I Promise a Result!"
+
+"Producing code" is code that can take some time
+
+"Consuming code" is code that must wait for the result
+
+A Promise is an Object that links Producing code and Consuming code */
+
+/* Promise Syntax
+let myPromise = new Promise(function(myResolve, myReject) {
+// "Producing Code" (May take some time)
+
+  myResolve(); // when successful
+  myReject();  // when error
+});
+
+/* "Consuming Code" (Must wait for a fulfilled Promise)
+myPromise.then(
+  function(value) {  code if successful  },
+  function(error) {  code if some error  }
+); 
 */
+
+    const validateDomain = async() => {
+        
+        try {
+            console.log(formState.domain)
+            const response = await axios.get("https://api.app.dev.understory.io/sudo/domains", { params: { domain: formState.domain, type: "Understory" === selectDomainType ? "subdomain" : "custom"} });
+            console.log(response)
+            if (response.status == 200) {
+                setValidationStatus("error");
+
+            } else {
+                setValidationStatus("available");
+
+                console.log("error")
+    }
+        } catch (error) {
+            console.log("error")
+    }}
+
 
     const theme = useTheme();
 
     const dropdownLanguage = [
-        { value: "danish", label: "Danish" },
-        { value: "norwegian", label: "Norwegian" },
-        { value: "english", label: "English" },
-        { value: "swedish", label: "Swedish" },
-        { value: "german", label: "German" },
+        { value: "danish", label: "Danish", flag: danishFlag },
+        { value: "norwegian", label: "Norwegian", flag: norwayFlag },
+        { value: "english", label: "English" , flag: ukFlag },
+        { value: "swedish", label: "Swedish", flag: swedishFlag },
+        { value: "german", label: "German", flag: germanFlag },
     ];
 
     const dropdownCurrency = [
@@ -81,7 +132,7 @@ export default function CreateNewCustomerLayout() {
 
 
     return (
-        <FormProvider>
+
             <div className={createNew.mainContent}>
                 <h1 style={{ ...theme.h1, ...theme.medium }}>New Account</h1>
 
@@ -107,20 +158,25 @@ export default function CreateNewCustomerLayout() {
                                     <Card width="360px" paddingBottom="30px">
                                         <div className={createNew.buttonToggle}>
                                             <button type="button" onClick={() => handleButtonOnClick("Custom")}
-                                                className={selectButton === "Custom" ? createNew.toggleDomainOn : createNew.toggleDomainOff}>Custom</button>
+                                                className={selectDomainType === "Custom" ? createNew.toggleDomainOn : createNew.toggleDomainOff}>Custom</button>
                                             <button type="button" onClick={() => handleButtonOnClick("Understory")}
-                                                className={selectButton === "Understory" ? createNew.toggleDomainOn : createNew.toggleDomainOff} >Understory</button>
+                                                className={selectDomainType === "Understory" ? createNew.toggleDomainOn : createNew.toggleDomainOff} >Understory</button>
                                         </div>
 
-                                        {selectButton === "Custom" ?
-                                            (<div>
-                                                <FormInput label="URL" name={"CustomDomain"} placeholder="www.companyname.com" onBlur={validateCustomDomain} onChange={handleUnderstoryInputChange} value={understoryDomain} required />
-                                            </div>) :
-                                            (<div>
-                                                <FormInput label="URL" name={"UnderstoryDomain"} placeholder="www.companyname.understory.io" onBlur={validateUnderstoryDomain} onChange={handleUnderstoryInputChange} value={understoryDomain}
-                                                    textAid={(validationStatus === "unavailable") ?"Domain is already taken" : (validationStatus==="error") ? "Error validating domain":"Domain is available" } required />
+                                        
 
-                                            </div>)}
+                                        {selectDomainType === "Custom" ?
+                                        
+                                            <div>
+                                                <FormInput label="URL" name={"domain"} placeholder="www.companyname.com" onBlur={validateDomain} className={createNew.domainInput} defaultValue={"Custom"}  required />
+                                            </div>
+                                            :
+                                            (<label className={createNew.domainLabel} >
+                                                <div>
+                                                    <FormInput label="URL" name={"domain"} placeholder="companyname" onBlur={validateDomain}   defaultValue={"Understory"}
+                                                        textAid={(validationStatus === "error") ? "Domain is already taken" :"Domain is available" } required />
+                                                </div>
+                                            </label>)}
 
                                         <div style={{ marginTop: "22px" }}>
                                             <DropdownMenu name={"language"} options={dropdownLanguage} placeholder="Language" />
@@ -201,7 +257,6 @@ export default function CreateNewCustomerLayout() {
 
                 </form>
             </div>
-        </FormProvider>
     )
 }
 
@@ -233,10 +288,13 @@ const SubmitButton = () => {
 
 
         const form = new FormData();
+
         form.append("companyName", formState.companyName)
         form.append("language", formState.language)
         form.append("description", formState.description ?? "")
         form.append("ownerName", formState.ownerName)
+        form.append("domain",formState.domain)
+        form.append("domainType", selectDomainType)
         form.append("companyEmail", formState.companyEmail)
         form.append("companyPhone", formState.companyPhone)
         form.append("address", formState.address)
@@ -277,4 +335,5 @@ const SubmitButton = () => {
             </span>
         </button>
     )
+    
 }

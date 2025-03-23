@@ -26,7 +26,7 @@ export default function SideBar() {
 
       <div style={{ gap: "15px" }} className={`flexContainer ${sideBar.sidebarLink} flexColumn`} >
         <NavLink to="customers" style={{ ...theme.h4, alignItems: "center", height: "40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`} ><CustomerIcon style={{ fill: 'currentColor', width: "26px", paddingRight: "10px", paddingLeft: "10px" }} /> Customers</NavLink>
-        <NavLink to="customers/new" style={{ ...theme.h4, alignItems: "center", height: "40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`}><CustomerNewIcon style={{ fill: 'currentColor', width: "26px", paddingRight: "10px", paddingLeft: "10px" }} /> Create New</NavLink>
+        <NavLink to="new" style={{ ...theme.h4, alignItems: "center", height: "40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`}><CustomerNewIcon style={{ fill: 'currentColor', width: "26px", paddingRight: "10px", paddingLeft: "10px" }} /> Create New</NavLink>
         <NavLink to="giftcards" style={{ ...theme.h4, alignItems: "center", height: "40px" }} className={({ isActive }) => `flexContainer ${isActive ? sideBar.active : ""}`}><GiftcardIcon style={{ fill: 'currentColor', width: "26px", paddingRight: "10px", paddingLeft: "10px" }} /> Gift cards</NavLink>
       </div>
 
