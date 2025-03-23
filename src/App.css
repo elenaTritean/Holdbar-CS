@@ -1,0 +1,21 @@
+html, body,#root,.app {
+    height:100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: "DM Sans";
+    font-size:"14px"
+}
+
+
+
+.flexContainer {
+    display: flex
+}
+
+.flexRow {
+    flex-direction: row
+}
+
+.flexColumn {
+    flex-direction: column
+}
