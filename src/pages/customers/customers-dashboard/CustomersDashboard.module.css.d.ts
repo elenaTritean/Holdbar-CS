@@ -14,6 +14,7 @@ const pButton: string;
 const onboardedWrapper: string;
 const verticalLine: string;
 const select: string;
+const logoImage: string;
 
 export {
 	searchBar,
@@ -24,7 +25,8 @@ export {
 	pButton,
 	onboardedWrapper,
 	verticalLine,
-	select
+	select,
+	logoImage
 };
 
 export default {
@@ -36,5 +38,6 @@ export default {
 	pButton,
 	onboardedWrapper,
 	verticalLine,
-	select
+	select,
+	logoImage
 }

@@ -28,7 +28,7 @@ export const useForm = () => useContext(FormContext);
 export const FormInput = ({ label, name, placeholder, style, textAid, pattern, onBlur, required, type }) => {
   const [inputState, setInputState] = useState("default");
   const [isError, setIsError] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(); 
+  const [isSuccess, setIsSuccess] = useState();
   const { formState, handleChange } = useForm();
   const theme = useTheme();
 
@@ -60,7 +60,7 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
       border: "1.2px solid rgb(220,220,220)",
       boxSizing: "border-box",
       paddingLeft: "10px",
-      color:"black",
+      color: "black",
       ...theme.h5,
       ...style,
       outline: "none",
@@ -92,10 +92,10 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
     },
 
     "::placeholder": {
-  color: "gray", 
-  ...theme.h5,
+      color: "gray",
+      ...theme.h5,
 
-},
+    },
 
 
   };
@@ -127,9 +127,10 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
         name={name}
         defaultValue={""}
         onChange={handleChange}
-        onBlur={() => { const value = formState[name] || "";
+        onBlur={() => {
+          const value = formState[name] || "";
           onBlur();
-          if (required && !value ) {
+          if (required && !value) {
             setInputState("error");
             setIsError(true);
             setIsSuccess(false)
@@ -138,7 +139,8 @@ export const FormInput = ({ label, name, placeholder, style, textAid, pattern, o
             setInputState("success");
             setIsSuccess(true)
             setIsError(false);
-          }}}
+          }
+        }}
 
         placeholder={placeholder}
         onMouseEnter={() => setInputState((prev) => (prev === "active" ? "active" : "hover"))}

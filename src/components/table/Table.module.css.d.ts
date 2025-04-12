@@ -8,15 +8,18 @@
 const tableWrapper: string;
 const theadWrapper: string;
 const tbodyWrapper: string;
+const firstColumn: string;
 
 export {
 	tableWrapper,
 	theadWrapper,
-	tbodyWrapper
+	tbodyWrapper,
+	firstColumn
 };
 
 export default {
 	tableWrapper,
 	theadWrapper,
-	tbodyWrapper
+	tbodyWrapper,
+	firstColumn
 }
