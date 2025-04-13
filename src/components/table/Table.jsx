@@ -4,14 +4,12 @@ import {
   getCoreRowModel,
 } from '@tanstack/react-table';
 import { Pagination } from "./Pagination";
-
-
 import table from "./Table.module.css";
 import { useTheme } from "../styling/ThemeContext";
 
 export default function Table({ cols, data, loading, onPaginationChange, onSortingChange, pagination, rowCount, sorting
 }) {
-  const cols = useMemo(() => cols.map(({ id, header, enableSorting }) => ({
+  const columns = useMemo(() => cols.map(({ id, header, enableSorting }) => ({
     ...columnHelper.accessor(id, {
       header
     }),
@@ -21,7 +19,7 @@ export default function Table({ cols, data, loading, onPaginationChange, onSorti
 
   const tableLib = useReactTable({
     data,
-    cols,
+    columns,
     getCoreRowModel: getCoreRowModel(),
     manualPagination: true,
     manualSorting: true,

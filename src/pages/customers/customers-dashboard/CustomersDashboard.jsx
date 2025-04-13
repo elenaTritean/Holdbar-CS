@@ -88,10 +88,10 @@ export default function CustomersDashboard() {
     () => [
       {
         Header: "Logo",
-        accessor: "pictures.logo.url",
+        accessor: "pictures?.logo?.url",
         Cell: ({ value }) => (
           <img
-            src={value || "https://via.placeholder.com/50"} // Fallback to placeholder
+            src={value || "https://media.dev.holdbar.com/onboard-ai/holdbar.com-3c0f194a.webp"} // Fallback to placeholder
             alt="Logo"
             style={{ width: "50px", height: "50px", borderRadius: "50%" }}
             className="logoImage"
