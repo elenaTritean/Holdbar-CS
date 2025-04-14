@@ -1,21 +1,16 @@
-import React from 'react';
+
 import {
   useReactTable,
+  flexRender,
   getCoreRowModel,
 } from '@tanstack/react-table';
 import { Pagination } from "./Pagination";
 import table from "./Table.module.css";
 import { useTheme } from "../styling/ThemeContext";
+import { Loader } from "../styling/Loader";
 
-export default function Table({ cols, data, loading, onPaginationChange, onSortingChange, pagination, rowCount, sorting
+export default function Table({ columns, data, loading, onPaginationChange, onSortingChange, pagination, rowCount, sorting
 }) {
-  const columns = useMemo(() => cols.map(({ id, header, enableSorting }) => ({
-    ...columnHelper.accessor(id, {
-      header
-    }),
-    enableSorting,
-  })),
-    [cols])
 
   const tableLib = useReactTable({
     data,
@@ -79,7 +74,7 @@ export default function Table({ cols, data, loading, onPaginationChange, onSorti
           )}
         </tbody>
       </table>
-      <Pagination tableLib={tableLib} sizes={[10, 10, 20]} />
+      <Pagination tableLib={tableLib} sizes={[5, 10, 20]} />
     </div>
   );
 }

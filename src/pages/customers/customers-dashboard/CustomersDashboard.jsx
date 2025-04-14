@@ -1,3 +1,4 @@
+import { createColumnHelper } from '@tanstack/react-table';
 import React, {
   useState, useEffect, useMemo, useCallback
 } from "react";
@@ -10,7 +11,7 @@ import { usePagination } from "../../../components/table/usePagination";
 import { FormProvider } from "../../../components/FormContext";
 import { useSorting } from "../../../components/table/useSorting";
 
-
+const columnHelper = createColumnHelper();
 const dropdown = [
   { value: "danish", label: "Danish" },
   { value: "norwegian", label: "Norwegian" },
@@ -24,6 +25,7 @@ export default function CustomersDashboard() {
   const queryParams = new URLSearchParams(location.search);
 
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState(queryParams.get("sortby") || "name");
@@ -67,8 +69,8 @@ export default function CustomersDashboard() {
 
       const customerData = await response.json();
 
-      // Update state with fetched data
-      setData(customerData.items); // Assuming `items` contains the data
+
+      setData(customerData.items);
       setCount(customerData.totalCount || 0); // Assuming `totalCount` contains the total number of items
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -84,53 +86,39 @@ export default function CustomersDashboard() {
   }, [fetchData]);
 
   // Define columns after handleSort
-  const cols = useMemo(
-    () => [
+  const cols = useMemo(() => [
+    columnHelper.accessor(row => row?.pictures?.logo?.url,
       {
-        Header: "Logo",
-        accessor: "pictures?.logo?.url",
-        Cell: ({ value }) => (
+        id: "logo", // must provide an ID when using function accessor
+        header: "Logo",
+        cell: info => (
           <img
-            src={value || "https://media.dev.holdbar.com/onboard-ai/holdbar.com-3c0f194a.webp"} // Fallback to placeholder
+            src={info.getValue() || "https://media.dev.holdbar.com/onboard-ai/holdbar.com-3c0f194a.webp"}
             alt="Logo"
             style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-            className="logoImage"
           />
         ),
-        id: "logo", // Unique ID for the column
-        disableSortBy: true, // Disable sorting for the logo column
-      },
-      {
-        Header: "Name",
-        accessor: "name",
-        getSortByToggleProps: () => ({
-          onClick: () => handleSort("name"),
-        }),
-      },
-      {
-        Header: "Last Booking",
-        accessor: "lastUpdated",
-        getSortByToggleProps: () => ({
-          onClick: () => handleSort("lastUpdated"),
-        }),
-      },
-      {
-        Header: "Upcoming Events",
-        accessor: "upcoming_events",
-        getSortByToggleProps: () => ({
-          onClick: () => handleSort("upcoming_events"),
-        }),
-      },
-      {
-        Header: "Onboarded",
-        accessor: "onboardingCompleted",
-        getSortByToggleProps: () => ({
-          onClick: () => handleSort("onboardingCompleted"),
-        }),
-      },
-    ],
-    [handleSort]
-  );
+        enableSorting: false,
+      }
+    ),
+    columnHelper.accessor("name", {
+      header: "Name",
+      enableSorting: true,
+    }),
+    columnHelper.accessor("lastUpdated", {
+      header: "Last Booking",
+      enableSorting: true,
+    }),
+    columnHelper.accessor("upcoming_events", {
+      header: "Upcoming Events",
+      enableSorting: true,
+    }),
+    columnHelper.accessor("onboardingCompleted", {
+      header: "Onboarded",
+      enableSorting: true,
+    })],
+    []);
+
 
   if (isLoading) {
     return <p>Loading data...</p>;
@@ -182,8 +170,8 @@ export default function CustomersDashboard() {
         </div>
 
         <Table
-          cols={cols}
-          data={fetchData} // Use fetchData to get the data
+          columns={cols}
+          data={data} // Use fetchData to get the data
           loading={isLoading}
           onPaginationChange={onPaginationChange}
           onSortingChange={onSortingChange}
