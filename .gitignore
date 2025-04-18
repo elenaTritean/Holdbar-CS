@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 src/components/styling/icons/LogoPlaceholder/LogoPlaceholder.module.css.d.ts
+/node_modules
