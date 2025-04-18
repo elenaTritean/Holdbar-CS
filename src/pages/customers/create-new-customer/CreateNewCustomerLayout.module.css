@@ -1,0 +1,156 @@
+.mainContent {
+    box-sizing: border-box; 
+}
+
+.pairWrapper{
+    display:flex;
+    flex-direction:row;
+    padding-bottom: 100px;
+    width:100%
+}
+
+
+
+
+ .logoPWrapper {
+    border:1px dashed rgb(210, 210, 210);
+    border-radius: 5px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height:160px;
+    justify-content: center;
+    position:relative
+}
+
+.p{
+    padding: 0px;
+    display:flex;
+    margin:0px;
+    text-align:center;
+}
+
+.logoAndNameWrapper {
+    justify-content: center;
+}
+
+.companyLogoP{
+    position: absolute;
+    top: -17px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.buttonToggle{
+    display:flex;
+    flex-direction:row;
+    border:1px solid rgb(141, 143, 163);
+    border-radius: 8px;
+    background-color: none;
+    width:fit-content;
+    padding:4px;
+
+
+}
+
+.toggleDomainOff {
+        border: none;
+        background-color: white;
+        height: 24px;
+        width: 100px;
+}
+
+.toggleDomainOn {
+        border: none;
+        background-color:rgb(24,65,233);
+        color: white;
+        border-radius: 6px;
+        height: 24px;
+        width: 100px;
+}
+
+.textarea {
+    width:100%;
+    max-width:100%;
+    height:224px;
+    border:none;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    padding:10px;
+    font-family: "DM Sans";
+}
+
+.cardAlignment {
+    display:flex;
+    flex-direction:column;
+    width:50%;
+    justify-content:flex-start
+  }
+
+  .cancelButton {
+        border:1px solid rgb(181, 181, 181);
+        color: rgb(181, 181, 181);
+        background-color: white;
+        border-radius: 6px;
+        height: 44px;
+        width: 152px;
+        
+  }
+
+  .saveButtonWrapper{
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: row;
+        margin-right:70px;
+  }
+  .saveButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 152px;
+    height: 44px;
+    background-color: rgb(24, 65, 233);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.saveButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: rgba(12, 46, 183, 0.9); 
+    width: var(--progress-width, 0%);
+    transition: width 0.3s ease; 
+    z-index: 1; 
+}
+
+.saveButtonText {
+    position: relative;
+    z-index: 2; 
+    pointer-events: none; 
+    color: white; 
+}
+
+.domainLabel {
+    position:relative;
+    display: block;
+    padding-right:70px;
+}
+    
+.domainLabel:after {
+        content: ".understory.io";
+        position: absolute;
+        top:30px;
+        left: 205px;
+        display: block;
+        color: rgba(0, 0, 0, 0.6);
+        font-size: 12px;
+    }

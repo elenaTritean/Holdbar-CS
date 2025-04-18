@@ -1,0 +1,27 @@
+.logoPWrapper {
+        border:1px dashed rgb(210, 210, 210);
+        border-radius: 5px;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+        height:160px;
+        justify-content: center;
+        position:relative
+    }
+
+.companyLogoP{
+    position: absolute;
+    top: -23px;
+    left: 10px;
+    background-color: white;
+    padding: 0 5px;
+}
+
+.p {
+
+    padding: 0px;
+    display:flex;
+    margin:0px;
+    text-align:center;
+
+}
