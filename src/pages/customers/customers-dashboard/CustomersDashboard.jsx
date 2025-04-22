@@ -24,6 +24,9 @@ export default function CustomersDashboard() {
   const theme = useTheme();
   const queryParams = new URLSearchParams(location.search);
 
+  //Toggle yes/no buttons Onboarded
+  const [selected, setSelected] = useState(null);
+
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [count, setCount] = useState(0);
@@ -93,9 +96,11 @@ export default function CustomersDashboard() {
         header: "Logo",
         cell: info => (
           <img
-            src={info.getValue() || "https://media.dev.holdbar.com/onboard-ai/holdbar.com-3c0f194a.webp"}
+            src={info.getValue() || "https://cataas.com/cat/gif?type=square"}
             alt="Logo"
-            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+            width= "32"
+            height= "32"
+            style={{ borderRadius: "50%" }}
           />
         ),
         enableSorting: false,
@@ -118,7 +123,14 @@ export default function CustomersDashboard() {
       enableSorting: true,
     })],
     []);
-
+  
+    const handleClick = (value) => {
+      if (selected === value) {
+        setSelected(null); 
+      } else {
+        setSelected(value);
+      }
+    };
 
   if (isLoading) {
     return <p>Loading data...</p>;
@@ -155,13 +167,15 @@ export default function CustomersDashboard() {
             </p>
             <div className={customersDashboard.yesNoButtonsWrapper}>
               <button
-                className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}
+                 onClick={() => handleClick('yes')}
+                 className={`customersDashboard.yesNoButton ${selected === 'yes' ? 'customersDashboard.selectedButton' : 'customersDashboard.unselectedButton'}`}
               >
                 Yes
               </button>
               <div className={customersDashboard.verticalLine}></div>
               <button
-                className={`${customersDashboard.yesNoButton} ${customersDashboard.pButton}`}
+                 onClick={() => handleClick('no')}
+                className={` customersDashboard.yesNoButton ${selected === 'yes' ? 'customersDashboard.selectedButton' : 'customersDashboard.unselectedButton'}`}
               >
                 No
               </button>

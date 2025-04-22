@@ -36,10 +36,6 @@ const router = createBrowserRouter([
                 element: <GiftcardsDashboard />,
             },
         ]
-
-
-
-
     }
 ]);
 

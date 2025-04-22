@@ -53,7 +53,12 @@
   padding: 0px;
 }
 
-.pButton {
+.selectedButton {
+  margin:10px;
+  color:blue;
+}
+
+.unselectedButton {
   margin: 10px;
   color: grey;
 }
